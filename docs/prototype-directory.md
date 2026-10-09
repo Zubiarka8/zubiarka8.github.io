@@ -54,6 +54,10 @@ The public verification command compares all nine HTML pages byte for byte, with
 ## Automation validation
 
 - `npm run build` and `npm run check`: passed for all nine routes.
-- `npm test`: eight tests passed, including branch races, non-forced rejection, unchanged snapshots, disabled candidates, escaped content, broken links, and symlink handling.
+- `npm test`: ten tests passed, including branch races, non-forced rejection, unchanged snapshots, disabled candidates, escaped content, broken links, and symlink handling.
 - Exporting Frequency through the CLI regenerates both routes and passes its six source/translation tests.
 - GitHub Pages runs the directory build and automation tests before uploading the static artifact. No npm installation is required.
+
+## Repository-wide commands
+
+See [repository automation](repository-automation.md) for the macOS command entry point, environment diagnosis, dependency installation, development server, full Astro checks, local all-candidate validation, and release orchestration. Deployment waiting is tested for the exact published SHA, unrelated runs, failed jobs, and timeout. All available candidates plus the automation suite pass 25 local tests. Full Astro validation remains blocked by unavailable dependencies.

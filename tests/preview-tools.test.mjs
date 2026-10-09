@@ -95,3 +95,20 @@ test('a race after the final head check propagates GitHub rejection without a fo
   assert.equal(h.calls.filter((c) => c.method === 'PATCH').length, 1);
   assert.equal(h.calls.at(-1).body.force, false);
 });
+
+test('deployment waiting selects the published commit and ignores unrelated successful runs', async () => {
+  const { waitForDeployment } = await import('../scripts/deployment.mjs');
+  let tick = 0;
+  const unrelated = { headSha: 'other', status: 'completed', conclusion: 'success', url: 'other-run' };
+  const expected = { headSha: 'wanted', status: 'completed', conclusion: 'success', url: 'wanted-run' };
+  const result = await waitForDeployment(() => tick === 0 ? [unrelated, { ...expected, status: 'in_progress' }] : [unrelated, expected], 'wanted', { now: () => tick, sleep: async (ms) => { tick += ms; }, intervalMs: 5, timeoutMs: 20 });
+  assert.equal(result.url, 'wanted-run');
+  assert.equal(tick, 5);
+});
+test('deployment failure and missing runs stop the release instead of claiming verification', async () => {
+  const { waitForDeployment } = await import('../scripts/deployment.mjs');
+  await assert.rejects(waitForDeployment(() => [{ headSha: 'wanted', status: 'completed', conclusion: 'failure', url: 'failed-run' }], 'wanted'), /failure: failed-run/);
+  let tick = 0;
+  await assert.rejects(waitForDeployment(() => [], 'wanted', { now: () => tick, sleep: async (ms) => { tick += ms; }, intervalMs: 5, timeoutMs: 12 }), /Timed out/);
+  assert.equal(tick, 12);
+});
