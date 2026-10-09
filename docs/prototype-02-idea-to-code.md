@@ -67,3 +67,12 @@ Results and preview limitations are recorded after implementation.
 ## Remaining verification
 
 Once dependencies can be installed, run the Astro type check and full site tests. Review both locales at 320, 768, 1024, and 1440px; use Tab, Enter, Space, touch, reduced motion, and JavaScript disabled. Verify locale hash preservation and React hydration. This candidate is offered for comparison, not selected as the final design or deployed to the portfolio site.
+
+## Published revision
+
+The candidate is saved on `prototype/02-idea-to-code` in `Zubiarka8/zubiarka8.github.io`. Source and standalone preview commit: `0a5bff0ef5750c3937cc3b0ede2ea43bb8072ef3`.
+
+- [Spanish review export](https://rawcdn.githack.com/Zubiarka8/zubiarka8.github.io/0a5bff0ef5750c3937cc3b0ede2ea43bb8072ef3/preview/es/index.html)
+- [English review export](https://rawcdn.githack.com/Zubiarka8/zubiarka8.github.io/0a5bff0ef5750c3937cc3b0ede2ea43bb8072ef3/preview/en/index.html)
+
+Both public URLs returned HTTP 200 and matched the local exports byte for byte. The branch comparison confirms the prototype is based on the preserved preconfiguration baseline. No production deployment was performed.
