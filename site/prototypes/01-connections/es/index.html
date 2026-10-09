@@ -1,0 +1,182 @@
+<!doctype html>
+<html lang="es"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><meta name="description" content="Portfolio de Arkaitz Zubizarreta: desarrollo web, herramientas de IA y el proyecto MCP mini-consumes-tokens."><meta name="theme-color" content="#edf3fa"><title>Arkaitz Zubizarreta | Portfolio</title><style>
+
+:root {
+  --color-paper: #edf3fa;
+  --color-ink: #152b48;
+  --color-muted: #52647a;
+  --color-line: #c5d3e4;
+  --color-accent: #204fa6;
+  --color-highlight: #cfe3ff;
+  --color-white: #ffffff;
+  --font-sans: "Trebuchet MS", Arial, sans-serif;
+  --font-display: "Arial Black", Arial, Helvetica, sans-serif;
+}
+
+html { scroll-behavior: smooth; scroll-padding-top: 2rem; }
+body { margin: 0; background: var(--color-paper); color: var(--color-ink); font-family: var(--font-sans); }
+* { box-sizing: border-box; }
+[hidden] { display: none !important; }
+a, button { -webkit-tap-highlight-color: transparent; }
+a { text-underline-offset: 0.25em; }
+button { font: inherit; }
+h1, h2, h3, p { margin: 0; }
+h2 { font-size: clamp(1.5rem, 2.6vw, 2rem); font-weight: 700; line-height: 1.2; letter-spacing: -0.045em; text-wrap: balance; }
+p { line-height: 1.65; }
+::selection { background: var(--color-highlight); color: var(--color-ink); }
+:focus-visible { outline: 3px solid var(--color-accent); outline-offset: 5px; }
+.skip-link { position: absolute; top: 1rem; left: 1rem; transform: translateY(-200%); background: var(--color-ink); color: var(--color-white); padding: 1rem; z-index: 10; }
+.skip-link:focus { transform: translateY(0); }
+.site-shell { max-width: 1400px; margin: auto; padding: 0 clamp(1rem, 4vw, 4rem); }
+.site-header { display: flex; align-items: center; justify-content: space-between; gap: 1.5rem; padding: 1.5rem 0; }
+.wordmark { font-family: var(--font-display); font-size: 2rem; font-weight: 900; letter-spacing: -0.1em; text-decoration: none; }
+.wordmark span { margin-left: 0.25rem; color: var(--color-accent); }
+.main-navigation { display: flex; align-items: center; gap: 2rem; font-size: 0.9rem; }
+.main-navigation a { padding: 0.75rem 0; text-decoration: none; }
+.main-navigation a:hover, .quiet-link:hover { text-decoration: underline; }
+.introduction { display: grid; grid-template-columns: 1.5fr 1fr; align-items: end; gap: 3rem; padding: 4rem 0 3.5rem; }
+h1 { font-family: var(--font-display); font-size: clamp(2.6rem, 6.2vw, 6rem); font-weight: 900; letter-spacing: -0.08em; line-height: 0.99; }
+h1 > span { display: block; }
+.name-dot { color: var(--color-accent); }
+.personal-statement { margin-top: 1.5rem; font-size: clamp(1rem, 1.6vw, 1.2rem); }
+.introduction-copy { max-width: 29rem; padding-bottom: 0.25rem; color: var(--color-muted); font-size: 1.05rem; }
+.intro-links { display: flex; flex-wrap: wrap; gap: 1.5rem; align-items: center; margin-top: 1.5rem; }
+.primary-link, .quiet-link { display: inline-flex; gap: 1rem; align-items: center; min-height: 48px; color: var(--color-ink); text-decoration: none; font-size: 0.95rem; }
+.primary-link { border-bottom: 2px solid var(--color-accent); font-weight: 700; }
+.primary-link:hover { color: var(--color-accent); }
+.relationship-section { padding: 2rem 0 4rem; }
+.map-heading { display: flex; justify-content: space-between; align-items: start; gap: 3rem; padding-bottom: 2rem; }
+.map-heading p { max-width: 24rem; color: var(--color-muted); font-size: 0.9rem; }
+.relationship-map { position: relative; display: block; grid-template-columns: 1fr 1.75fr 1fr; grid-template-areas: "knowledge project assistants" "workflow project stack" "details details details"; gap: 2rem 4rem; padding: 2rem; background: var(--color-white); border-radius: 1.5rem; }
+.relationship-map.is-interactive { display: grid; }
+.relationship-map > * { min-width: 0; }
+.relationship-map:not(.is-interactive) .project-sheet { margin-bottom: 2rem; }
+.relationship-map:not(.is-interactive) .connectors { display: none; }
+.connectors { position: absolute; inset: 0 0 auto; width: 100%; height: 30rem; pointer-events: none; }
+.connector { fill: none; stroke: var(--color-line); stroke-width: 1.5; vector-effect: non-scaling-stroke; }
+.connection-points { fill: var(--color-accent); }
+[data-active="knowledge"] .connector-knowledge, [data-active="workflow"] .connector-workflow, [data-active="assistants"] .connector-assistants, [data-active="project"] .connector-project { stroke: var(--color-accent); stroke-width: 2.5; }
+.project-sheet { grid-area: project; position: relative; z-index: 1; padding: 2rem; background: var(--color-ink); color: var(--color-white); border-radius: 0.5rem; display: flex; flex-direction: column; }
+.project-mark { display: flex; gap: 0.5rem; align-items: center; width: 3.5rem; height: 2rem; margin-bottom: 1.25rem; }
+.project-mark span { position: relative; width: 0.65rem; height: 0.65rem; border: 2px solid var(--color-highlight); border-radius: 50%; }
+.project-mark span:not(:last-child)::after { content: ''; position: absolute; left: 0.5rem; top: 0.2rem; width: 0.7rem; height: 2px; background: var(--color-highlight); }
+.project-label { color: var(--color-highlight); font-size: 0.85rem; }
+.project-sheet h3 { margin: 0.75rem 0 1rem; font-size: clamp(1.6rem, 3vw, 2.8rem); font-weight: 700; letter-spacing: -0.055em; line-height: 1.1; overflow-wrap: anywhere; }
+.project-description { font-size: 0.95rem; line-height: 1.6; }
+.project-stack { display: flex; flex-wrap: wrap; list-style: none; padding: 0; gap: 0.5rem 1rem; color: var(--color-highlight); font-size: 0.85rem; margin: 1.5rem 0; }
+.project-link { display: flex; align-items: center; justify-content: space-between; gap: 1rem; min-height: 48px; margin-top: auto; padding-top: 1rem; border-top: 1px solid #60718b; font-size: 0.9rem; color: var(--color-white); text-decoration: none; }
+.project-link:hover { text-decoration: underline; }
+.project-link:focus-visible { outline-color: var(--color-highlight); }
+.group-node { position: relative; z-index: 1; display: flex; flex-direction: column; align-items: flex-start; justify-content: center; text-align: left; border: 1px solid transparent; background: var(--color-paper); color: var(--color-ink); padding: 1.25rem; border-radius: 0.5rem; cursor: pointer; transition: border-color 160ms ease, background-color 160ms ease; }
+.group-knowledge { grid-area: knowledge; }
+.group-workflow { grid-area: workflow; }
+.group-assistants { grid-area: assistants; }
+.group-project { grid-area: stack; }
+.group-node:hover { border-color: var(--color-accent); }
+.group-node[aria-pressed="true"] { background: var(--color-highlight); border-color: var(--color-accent); }
+.node-symbol { font-size: 1.6rem; height: 2.75rem; font-weight: 700; color: var(--color-accent); }
+.node-title { font-size: 1.15rem; font-weight: 700; line-height: 1.25; }
+.node-summary { margin-top: 0.5rem; font-size: 0.8rem; line-height: 1.4; color: var(--color-muted); }
+.node-action { margin-top: 1.25rem; font-size: 0.8rem; display: flex; align-items: center; gap: 0.5rem; }
+.relationship-details { grid-area: details; position: relative; z-index: 1; border-top: 1px solid var(--color-line); padding-top: 1.5rem; }
+.relationship-panel + .relationship-panel { margin-top: 1.5rem; }
+.is-interactive .relationship-panel { margin-top: 0; }
+.relationship-panel h3 { font-size: 1rem; font-weight: 700; margin-bottom: 0.5rem; }
+.relationship-panel p { max-width: 70ch; font-size: 0.9rem; color: var(--color-muted); }
+.item-list { display: flex; flex-wrap: wrap; gap: 0.5rem; padding: 0; margin: 1rem 0 0; list-style: none; }
+.item-list li { font-size: 0.85rem; padding: 0.4rem 0.75rem; background: var(--color-white); border: 1px solid var(--color-line); border-radius: 0.25rem; overflow-wrap: anywhere; max-width: 100%; }
+.relationship-panel .item-list li { background: var(--color-paper); border: 0; }
+.concept-note { display: flex; align-items: baseline; gap: 0.75rem; margin-top: 1rem; color: var(--color-muted); font-size: 0.8rem; max-width: 85ch; }
+.concept-note span { color: var(--color-accent); flex-shrink: 0; }
+.background-sections { display: grid; grid-template-columns: 1fr 1fr; gap: 5rem; padding: 1rem 0 4rem; }
+.background-sections p { max-width: 60ch; margin-top: 1.25rem; color: var(--color-muted); }
+.experience-section h3 { font-size: 1.05rem; font-weight: 700; margin-top: 1.5rem; }
+.experience-section p { margin-top: 0.75rem; }
+.skill-sections { padding-bottom: 3rem; }
+.skill-section { display: grid; grid-template-columns: 1fr 1.3fr; gap: 4rem; padding: 2rem 0; border-top: 1px solid var(--color-line); }
+.skill-section h2 { font-size: 1.5rem; }
+.skill-section p { color: var(--color-muted); font-size: 0.95rem; max-width: 45ch; margin-top: 0.75rem; }
+.skill-section .item-list { margin: 0; align-content: start; }
+.site-footer { display: flex; justify-content: space-between; flex-wrap: wrap; gap: 1rem; padding: 1.5rem 0 2rem; border-top: 1px solid var(--color-line); font-size: 0.8rem; color: var(--color-muted); }
+.site-footer a { min-height: 44px; display: inline-flex; align-items: center; }
+
+@media (max-width: 1100px) {
+  .relationship-map { gap: 1.5rem; padding: 1.5rem; grid-template-columns: 1fr 1.5fr 1fr; }
+  .project-sheet { padding: 1.5rem; }
+  .group-node { padding: 1rem; }
+  .background-sections { gap: 3rem; }
+}
+@media (max-width: 800px) {
+  .site-header { flex-wrap: wrap; gap: 0.75rem; }
+  .main-navigation { order: 3; width: 100%; gap: 1.5rem; flex-wrap: wrap; font-size: 0.85rem; }
+  .introduction { grid-template-columns: 1fr; gap: 2rem; padding-top: 2rem; }
+  h1 { font-size: clamp(2.6rem, 9vw, 5rem); }
+  .introduction-copy { max-width: 38rem; }
+  .map-heading { display: block; }
+  .map-heading p { margin-top: 1rem; max-width: 38rem; }
+  .relationship-map { grid-template-columns: 1fr 1fr; grid-template-areas: "project project" "knowledge assistants" "workflow stack" "details details"; }
+  .connectors { display: none; }
+  .project-sheet h3 { font-size: clamp(1.8rem, 5vw, 2.8rem); }
+  .project-description { max-width: 60ch; }
+  .background-sections { gap: 2rem; }
+  .skill-section { grid-template-columns: 1fr; gap: 1.5rem; }
+}
+@media (max-width: 480px) {
+  .relationship-map { grid-template-columns: minmax(0, 1fr); grid-template-areas: "project" "knowledge" "workflow" "assistants" "stack" "details"; padding: 1rem; gap: 1rem; }
+  .group-node { min-height: 150px; }
+  .project-sheet { padding: 1.25rem; }
+  .background-sections { grid-template-columns: 1fr; gap: 2.5rem; }
+  .site-header nav a { padding-left: 0.65rem; padding-right: 0.65rem; }
+  .main-navigation { gap: 0.5rem; }
+  .main-navigation a:first-child { padding-left: 0; }
+  .personal-statement { max-width: 24ch; }
+  .relationship-section { padding-top: 1rem; padding-bottom: 3rem; }
+}
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  *, *::before, *::after { transition: none !important; animation: none !important; }
+}
+
+a { color: inherit; }
+.language-switcher { display: flex; gap: 0.25rem; font-size: 0.875rem; }
+.language-link { padding: 0.75rem 1rem; border-radius: 999px; text-decoration: none; color: var(--color-muted); }
+.language-link[aria-current="page"] { background: var(--color-ink); color: var(--color-paper); }
+.language-link:hover { text-decoration: underline; }
+button { appearance: none; }
+</style><link rel="icon" href="../favicon.svg"></head>
+<body><a href="#main" class="skip-link">Saltar al contenido</a><div class="site-shell">
+<header class="site-header"><a href="../es/index.html" class="wordmark" aria-label="Arkaitz Zubizarreta">az<span aria-hidden="true">⋆</span></a><nav class="main-navigation" aria-label="Navegación principal"><a href="#projects">Proyectos</a><a href="#experience">Experiencia</a><a href="#languages">Lenguajes y tecnologías</a></nav><nav class="language-switcher" aria-label="Seleccionar idioma"><a data-language class="language-link" href="../es/index.html" hreflang="es" lang="es" aria-current="page">Español</a><a data-language class="language-link" href="../en/index.html" hreflang="en" lang="en">English</a></nav></header>
+<main id="main"><section class="introduction" aria-labelledby="introduction-title"><div class="name-block"><h1 id="introduction-title"><span>Arkaitz</span><span>Zubizarreta<span class="name-dot" aria-hidden="true">.</span></span></h1><p class="personal-statement">Conectar ideas. Crear herramientas útiles.</p></div><div class="introduction-copy"><p>Me apasionan la tecnología y la innovación. Busco oportunidades de trabajo donde seguir aprendiendo y aportar con mis proyectos.</p><div class="intro-links"><a href="#projects" class="primary-link">Ver proyectos<span aria-hidden="true">↓</span></a><a href="https://github.com/Zubiarka8" class="quiet-link">Mi GitHub<span aria-hidden="true">↗</span></a></div></div></section>
+<section id="projects" class="relationship-section" aria-labelledby="projects-title"><div class="map-heading"><h2 id="projects-title">El código también tiene conexiones.</h2><p>Selecciona un grupo para explorar sus herramientas y su papel en este mapa.</p></div><div class="relationship-map" data-explorer><svg class="connectors" viewBox="0 0 1000 500" preserveAspectRatio="none" aria-hidden="true" focusable="false">
+      <path class="connector connector-knowledge" d="M150 125 H240 Q280 125 280 165 V210 Q280 250 330 250 H500" />
+      <path class="connector connector-workflow" d="M150 375 H240 Q280 375 280 335 V290 Q280 250 330 250 H500" />
+      <path class="connector connector-assistants" d="M850 125 H760 Q720 125 720 165 V210 Q720 250 670 250 H500" />
+      <path class="connector connector-project" d="M850 375 H760 Q720 375 720 335 V290 Q720 250 670 250 H500" />
+      <g class="connection-points"><circle cx="150" cy="125" r="5" /><circle cx="150" cy="375" r="5" /><circle cx="850" cy="125" r="5" /><circle cx="850" cy="375" r="5" /></g>
+    </svg><article class="project-sheet" aria-labelledby="featured-project-title"><div class="project-mark" aria-hidden="true"><span></span><span></span><span></span></div><p class="project-label">Proyecto destacado</p><h3 id="featured-project-title">mini-<wbr>consumes-<wbr>tokens</h3><p class="project-description">Un servidor MCP que ayuda a las herramientas de IA a consultar código con menos contexto. Indexa el repositorio localmente y permite localizar símbolos, referencias y relaciones entre funciones sin releer archivos completos.</p><ul class="project-stack" aria-label="Tecnologías del proyecto"><li>Rust</li><li>MCP</li><li>SQLite</li><li>Tree-sitter</li></ul><a class="project-link" href="https://github.com/Zubiarka8/mini-consumes-tokens">Ver código y documentación<span aria-hidden="true">↗</span></a></article><button type="button" hidden class="group-node group-knowledge" data-group="knowledge" aria-pressed="false" aria-controls="relationship-knowledge"><span class="node-symbol" aria-hidden="true">{ }</span><span class="node-title">Conocimientos</span><span class="node-summary">Lenguajes y tecnologías</span><span class="node-action"><span data-selected hidden>Seleccionado</span><span data-select>Explorar grupo</span><span aria-hidden="true">↗</span></span></button><button type="button" hidden class="group-node group-workflow" data-group="workflow" aria-pressed="false" aria-controls="relationship-workflow"><span class="node-symbol" aria-hidden="true">+ /</span><span class="node-title">Desarrollo</span><span class="node-summary">Herramientas de trabajo</span><span class="node-action"><span data-selected hidden>Seleccionado</span><span data-select>Explorar grupo</span><span aria-hidden="true">↗</span></span></button><button type="button" hidden class="group-node group-assistants" data-group="assistants" aria-pressed="false" aria-controls="relationship-assistants"><span class="node-symbol" aria-hidden="true">✳</span><span class="node-title">Inteligencia artificial</span><span class="node-summary">Herramientas que utilizo</span><span class="node-action"><span data-selected hidden>Seleccionado</span><span data-select>Explorar grupo</span><span aria-hidden="true">↗</span></span></button><button type="button" hidden class="group-node group-project" data-group="project" aria-pressed="false" aria-controls="relationship-project"><span class="node-symbol" aria-hidden="true">⌘</span><span class="node-title">Dentro del MCP</span><span class="node-summary">Su stack real</span><span class="node-action"><span data-selected hidden>Seleccionado</span><span data-select>Explorar grupo</span><span aria-hidden="true">↗</span></span></button><div class="relationship-details" aria-live="polite" aria-atomic="true"><div id="relationship-knowledge" class="relationship-panel" data-panel="knowledge"><h3>Conocimientos</h3><p>Los lenguajes y frameworks que conozco forman mi base para crear aplicaciones. Esta conexión representa mi perfil, no las dependencias del MCP.</p><ul class="item-list"><li>HTML</li><li>CSS</li><li>Bootstrap</li><li>JavaScript</li><li>Python</li><li>Flask</li><li>Django</li><li>PHP</li><li>SQL</li><li>NoSQL</li><li>Java</li><li>C#</li><li>.NET MAUI</li><li>Markdown</li></ul></div><div id="relationship-workflow" class="relationship-panel" data-panel="workflow"><h3>Desarrollo</h3><p>Editores, bases de datos y herramientas que utilizo para desarrollar y organizar mi trabajo. Su relación con el proyecto es conceptual.</p><ul class="item-list"><li>Visual Studio Code</li><li>Cursor</li><li>SQLite</li><li>MySQL</li><li>IntelliJ IDEA</li><li>Eclipse</li><li>DBeaver</li><li>Docker</li><li>GitHub</li><li>Apache</li><li>Git</li><li>Trello</li></ul></div><div id="relationship-assistants" class="relationship-panel" data-panel="assistants"><h3>Inteligencia artificial</h3><p>Utilizo estas herramientas de IA. Mi proyecto MCP aborda un problema de este ámbito: localizar código relevante y reducir la lectura repetida de archivos. El mapa no afirma integraciones con cada herramienta.</p><ul class="item-list"><li>Cursor</li><li>GitHub Copilot</li><li>Codex</li><li>ChatGPT</li><li>Claude</li></ul></div><div id="relationship-project" class="relationship-panel" data-panel="project"><h3>Dentro del MCP</h3><p>mini-consumes-tokens es un servidor y CLI escrito en Rust. Utiliza SQLite y Tree-sitter para indexar código localmente y ofrece consultas a través de MCP.</p><ul class="item-list"><li>Rust</li><li>MCP</li><li>SQLite</li><li>Tree-sitter</li></ul></div></div></div><p class="concept-note"><span aria-hidden="true">⊙</span>Mapa conceptual de mi perfil. Las conexiones no indican que todas estas herramientas se utilicen en el proyecto.</p></section>
+<div class="background-sections"><section id="about" aria-labelledby="about-title"><h2 id="about-title">Sobre mí</h2><p>Soy Arkaitz. Me interesa crear aplicaciones y explorar cómo la inteligencia artificial puede ayudar en el desarrollo. En mini-consumes-tokens trabajo en una herramienta para reducir el contexto que necesitan los asistentes de IA al consultar código.</p></section><section id="experience" class="experience-section" aria-labelledby="experience-title"><h2 id="experience-title">Experiencia</h2><h3>Prácticas de desarrollo web · 3 meses</h3><p>Tres meses de prácticas dedicados a crear una web. Una experiencia con un proyecto concreto que forma parte de mi trayectoria en desarrollo.</p></section></div>
+<div class="skill-sections"><section id="languages" class="skill-section" aria-labelledby="languages-title"><div><h2 id="languages-title">Lenguajes y tecnologías</h2><p>Lenguajes, frameworks y tecnologías que conozco.</p></div><ul class="item-list"><li>HTML</li><li>CSS</li><li>Bootstrap</li><li>JavaScript</li><li>Python</li><li>Flask</li><li>Django</li><li>PHP</li><li>SQL</li><li>NoSQL</li><li>Java</li><li>C#</li><li>.NET MAUI</li><li>Markdown</li></ul></section><section id="tools" class="skill-section" aria-labelledby="tools-title"><div><h2 id="tools-title">Herramientas</h2><p>Las herramientas que utilizo para desarrollar, gestionar datos y organizar mi trabajo.</p></div><ul class="item-list"><li>Visual Studio Code</li><li>Cursor</li><li>SQLite</li><li>MySQL</li><li>IntelliJ IDEA</li><li>Eclipse</li><li>DBeaver</li><li>Docker</li><li>GitHub</li><li>Apache</li><li>Git</li><li>Trello</li></ul></section><section id="ai" class="skill-section" aria-labelledby="ai-title"><div><h2 id="ai-title">Herramientas de IA</h2><p>Las herramientas de inteligencia artificial que utilizo.</p></div><ul class="item-list"><li>Cursor</li><li>GitHub Copilot</li><li>Codex</li><li>ChatGPT</li><li>Claude</li></ul></section></div></main>
+<footer class="site-footer"><p>Arkaitz Zubizarreta</p><p>Tecnología, aprendizaje y proyectos propios.</p><a href="https://github.com/Zubiarka8/zubiarka8.github.io">GitHub <span aria-hidden="true">↗</span></a></footer></div><script>
+  document.querySelectorAll             ('[data-explorer]').forEach((explorer) => {
+    const controls = Array.from(explorer.querySelectorAll                   ('[data-group]'));
+    const panels = Array.from(explorer.querySelectorAll             ('[data-panel]'));
+    function selectGroup(id        ) {
+      explorer.dataset.active = id;
+      controls.forEach((control) => {
+        const selected = control.dataset.group === id;
+        control.setAttribute('aria-pressed', String(selected));
+        control.querySelector             ('[data-selected]') .hidden = !selected;
+        control.querySelector             ('[data-select]') .hidden = selected;
+      });
+      panels.forEach((panel) => { panel.hidden = panel.dataset.panel !== id; });
+    }
+    selectGroup('knowledge');
+    controls.forEach((control) => {
+      control.hidden = false;
+      control.addEventListener('click', () => selectGroup(control.dataset.group ));
+    });
+    explorer.classList.add('is-interactive');
+  });
+
+document.querySelectorAll('[data-language]').forEach((link) => { link.addEventListener('click', () => { link.hash = window.location.hash; }); });
+</script></body></html>
