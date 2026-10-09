@@ -33,7 +33,7 @@ Phones use a single vertical sequence with the project first, group controls nex
 
 The supplied local workspace has no `.git` directory. The implementation was prepared in `prototypes/01-connections/` to preserve the starter. GitHub API checks confirmed that `prototype/01-connections` and `base/preconfiguration` initially shared commit `71238d76a73b3a2d406cdae434ddd5efa47b292e`.
 
-The candidate source and standalone preview are published together on `prototype/01-connections` through GitHub's Git data API. `main`, the baseline, competing branches, and the GitHub Pages deployment are unchanged. The standalone HTML can be served through raw.githack.com for review; this is a visual export, not a verified Astro production build.
+The candidate source and standalone preview are published together on `prototype/01-connections` through GitHub's Git data API. `main`, the baseline, competing branches, and the GitHub Pages deployment are unchanged. The standalone HTML is published separately at https://zubiarka8.github.io/portfolio-connections-preview/es/ for review; this is a visual export, not a verified Astro production build.
 
 ## Validation
 
@@ -57,3 +57,7 @@ Run the type check and complete generated-site tests. Open both locales and veri
 ## Standalone visual preview
 
 `scripts/export-preview.mjs` exports self-contained Spanish and English HTML pages under `preview/`. It reuses the source CSS, localized content, confirmed data, SVG, and actual relationship enhancement script, with a separate preview HTML renderer. No dependency installation or HTTP server is needed. Structure checks passed for document language, one h1, four buttons, unique IDs, valid panel references, embedded assets, and absent contact in both locales. This export does not replace Astro build validation or browser review. A local HTTP server could not bind its socket in the sandbox. GitHub API access works, but Git transport cannot resolve `github.com`; this transport limitation was resolved for branch publication using GitHub’s API. The main GitHub Pages site was not deployed.
+
+## Published review URL
+
+The source candidate is on `prototype/01-connections` in `Zubiarka8/zubiarka8.github.io`. A separate public repository, `Zubiarka8/portfolio-connections-preview`, hosts only the standalone export through GitHub Pages. The review URLs are https://zubiarka8.github.io/portfolio-connections-preview/es/ and https://zubiarka8.github.io/portfolio-connections-preview/en/. The original portfolio's `main` branch and Pages settings are unchanged. The initial raw.githack.com review attempt returned HTTP 403, so it was not used as the final link.
