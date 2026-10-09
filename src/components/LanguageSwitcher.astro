@@ -1,0 +1,17 @@
+---
+import { locales, type Locale } from '../i18n/translations';
+interface Props { locale: Locale; label: string }
+const { locale, label } = Astro.props;
+---
+<nav class="language-switcher" aria-label={label}>
+  {locales.map((language) => (
+    <a data-language href={`/${language}/`} hreflang={language} lang={language} aria-current={locale === language ? 'page' : undefined}>
+      {language === 'es' ? 'Español' : 'English'}
+    </a>
+  ))}
+</nav>
+<script>
+  document.querySelectorAll<HTMLAnchorElement>('[data-language]').forEach((link) => {
+    link.addEventListener('click', () => { link.hash = window.location.hash; });
+  });
+</script>

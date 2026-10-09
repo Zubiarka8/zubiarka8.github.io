@@ -1,0 +1,38 @@
+import { mkdir, readFile, writeFile } from 'node:fs/promises';
+import { translations, locales } from '../src/i18n/translations.ts';
+import { selectExampleLines } from '../src/data/context-example.ts';
+import { expertise } from '../src/data/expertise.ts';
+import { profile, featuredProject, contact } from '../src/data/profile.ts';
+
+// A standalone review export, not an Astro build or React hydration test.
+const root = new URL('../preview/', import.meta.url);
+const css = (await readFile(new URL('../src/styles/global.css', import.meta.url), 'utf8'))
+  .replace('@import "tailwindcss";', '').replace('@theme {', ':root {');
+const enhancement = await readFile(new URL('./preview-interaction.js', import.meta.url), 'utf8');
+const escape = (value) => String(value).replaceAll('&', '&amp;').replaceAll('<', '&lt;').replaceAll('>', '&gt;').replaceAll('"', '&quot;');
+const list = (items, className) => `<ul class="${className}">${items.map((item) => `<li>${escape(item)}</li>`).join('')}</ul>`;
+const stages = ['problem', 'approach', 'result'];
+const skills = ['languages', 'tools', 'ai'];
+for (const locale of locales) {
+  const text = translations[locale];
+  const journey = text.journey;
+  const demo = journey.demo;
+  const code = selectExampleLines('full').map((line) => `<span class="code-line${line.relevant ? ' relevant-line' : ''}" data-line="${line.number}" data-relevant="${line.relevant}"><span class="line-number" aria-hidden="true">${line.number}</span><span>${escape(line.code || ' ')}</span>\n</span>`).join('');
+  const buttons = ['full', 'focused'].map((mode) => `<button type="button" data-view="${mode}" aria-pressed="${mode === 'full'}" aria-controls="example-code"><span data-marker aria-hidden="true">${mode === 'full' ? '●' : '○'}</span> ${escape(demo[mode])}</button>`).join('');
+  const html = `<!doctype html>
+<html lang="${locale}"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><meta name="description" content="${escape(text.description)}"><meta name="theme-color" content="#ffffff"><title>${escape(text.title)}</title><style>${css}</style><link rel="icon" href="../favicon.svg"></head>
+<body><a href="#main" class="skip-link">${escape(text.skip)}</a><div class="site-shell">
+<header class="site-header"><a href="index.html" class="wordmark" aria-label="${escape(profile.publicName)}">az<span aria-hidden="true">/</span></a><nav class="main-navigation" aria-label="${escape(journey.navigation)}">${['projects', 'experience', 'languages'].map((id) => `<a href="#${id}">${escape(text.sections[id].title)}</a>`).join('')}</nav><nav class="language-switcher" aria-label="${escape(text.language)}">${locales.map((language) => `<a data-language href="../${language}/index.html" hreflang="${language}" lang="${language}"${locale === language ? ' aria-current="page"' : ''}>${language === 'es' ? 'Español' : 'English'}</a>`).join('')}</nav></header>
+<main id="main"><section class="introduction" aria-labelledby="introduction-title"><div class="identity"><p class="role-label">${escape(journey.role)}</p><h1 id="introduction-title"><span>Arkaitz</span><span>Zubizarreta</span></h1></div><div class="intro-copy"><p>${escape(text.introduction)}</p><div class="intro-links"><a href="#projects" class="primary-link">${escape(text.projectsLink)}</a><a href="${profile.githubUrl}">${escape(text.githubLink)}</a></div></div><div class="progression-intro"><p>${escape(journey.statement)}</p><ol class="progression-band" aria-label="${escape(journey.stagesLabel)}">${stages.map((id, index) => `<li><a href="#stage-${id}"><span class="stage-index">0${index + 1}</span><span>${escape(journey.stages[id].short)}</span><span aria-hidden="true" class="band-arrow">→</span></a></li>`).join('')}</ol></div></section>
+<section id="projects" class="project-section" aria-labelledby="projects-title"><div class="project-introduction"><p class="section-label">${escape(text.sections.projects.title)}</p><h2 id="projects-title">${escape(journey.projectHeading)}</h2><p>${escape(journey.projectSubtitle)}</p></div><article aria-labelledby="featured-project-title"><div class="project-evidence"><div><p class="section-label">${escape(text.featuredProject.label)}</p><h3 id="featured-project-title">${featuredProject.name}</h3><p>${escape(text.featuredProject.description)}</p></div><div class="project-resources">${list(featuredProject.technologies, 'project-stack')}<a class="source-link" href="${featuredProject.repositoryUrl}">${escape(text.featuredProject.sourceLink)}<span aria-hidden="true">↗</span></a></div></div>
+<div class="story-layout"><ol class="story-stages" aria-label="${escape(journey.stagesLabel)}">${stages.map((id, index) => `<li id="stage-${id}"><span class="stage-number" aria-hidden="true">0${index + 1}</span><div><h4>${escape(journey.stages[id].title)}</h4><p>${escape(journey.stages[id].description)}</p></div></li>`).join('')}</ol>
+<div class="comparison" data-comparison data-keyboard="false"><div class="comparison-header"><span class="example-label">${escape(demo.label)}</span><h4 id="comparison-title">${escape(demo.title)}</h4><p>${escape(demo.query)}</p></div><div class="comparison-controls" role="group" aria-label="${escape(demo.controls)}" hidden>${buttons}</div><div class="code-heading"><span>invoice.js</span><span data-view-label>${escape(demo.full)}</span></div><pre id="example-code" tabindex="0" aria-labelledby="comparison-title"><code>${code}</code></pre><p class="comparison-status" role="status" aria-live="polite" data-full="${escape(demo.fullDescription)}" data-focused="${escape(demo.focusedDescription)}">${escape(demo.fullDescription)}</p><p class="comparison-note">${escape(demo.disclaimer)}</p></div></div></article></section>
+<div class="background-sections"><section id="about" aria-labelledby="about-title"><h2 id="about-title">${escape(text.sections.about.title)}</h2><p>${escape(text.sections.about.description)}</p></section><section id="experience" aria-labelledby="experience-title"><h2 id="experience-title">${escape(text.sections.experience.title)}</h2><h3>${escape(journey.internship)}</h3><p>${escape(text.sections.experience.description)}</p></section></div><div class="skill-sections">${skills.map((id) => `<section id="${id}" class="skill-section" aria-labelledby="${id}-title"><div><h2 id="${id}-title">${escape(text.sections[id].title)}</h2><p>${escape(text.sections[id].description)}</p></div>${list(expertise[id], 'item-list')}</section>`).join('')}</div>
+${contact.enabled && contact.url ? `<section id="contact" class="contact-section" aria-labelledby="contact-title"><h2 id="contact-title">${escape(text.sections.contact.title)}</h2><p>${escape(text.sections.contact.description)}</p><a href="${escape(contact.url)}">${escape(text.contactLink)}</a></section>` : ''}
+</main><footer class="site-footer"><p>${profile.publicName}</p><p>${escape(text.footer)}</p><a href="https://github.com/Zubiarka8/zubiarka8.github.io">GitHub</a></footer></div><script>${enhancement}</script></body></html>`;
+  await mkdir(new URL(`${locale}/`, root), { recursive: true });
+  await writeFile(new URL(`${locale}/index.html`, root), html);
+}
+await writeFile(new URL('index.html', root), '<!doctype html><html lang="es"><head><meta charset="utf-8"><meta http-equiv="refresh" content="0;url=es/index.html"><title>Arkaitz Zubizarreta</title></head><body><a href="es/index.html">Español</a></body></html>');
+await writeFile(new URL('favicon.svg', root), await readFile(new URL('../public/favicon.svg', import.meta.url)));
+console.log('Exported both standalone review routes. This is not an Astro production build.');
