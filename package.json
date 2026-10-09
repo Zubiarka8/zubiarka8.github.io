@@ -1,24 +1,35 @@
 {
-  "name": "portfolio-preview-automation",
+  "name": "zubiarka8.github.io",
+  "version": "0.1.0",
   "private": true,
   "type": "module",
   "engines": {
-    "node": ">=24"
+    "node": ">=22.12.0"
   },
   "scripts": {
-    "build": "node scripts/previews.mjs build",
-    "check": "node scripts/previews.mjs check",
-    "test": "node --test tests/*.test.mjs",
-    "preview:export": "node scripts/previews.mjs export",
-    "preview:refresh": "node scripts/previews.mjs refresh",
-    "preview:publish": "node scripts/previews.mjs publish-prototype",
-    "hub:publish": "node scripts/previews.mjs publish-hub",
-    "verify:public": "node scripts/previews.mjs verify",
-    "doctor": "node scripts/previews.mjs doctor",
-    "check:all": "node scripts/previews.mjs check-all",
-    "release": "node scripts/previews.mjs release",
-    "preview:install": "node scripts/previews.mjs install",
-    "preview:check": "node scripts/previews.mjs validate-astro",
-    "preview:dev": "node scripts/previews.mjs dev"
+    "dev": "astro dev",
+    "check": "astro check",
+    "build": "astro build",
+    "preview": "astro preview",
+    "test": "npm run build && node --experimental-strip-types --test tests/*.test.mjs",
+    "test:translations": "node --experimental-strip-types --test tests/translations.test.mjs",
+    "pages:build": "node scripts/repo.mjs build",
+    "pages:check": "node scripts/repo.mjs check",
+    "preview:release": "node scripts/repo.mjs release"
+  },
+  "dependencies": {
+    "astro": "7.3.8",
+    "@astrojs/react": "7.0.1",
+    "@astrojs/sitemap": "3.7.4",
+    "react": "19.3.0",
+    "react-dom": "19.3.0",
+    "tailwindcss": "4.3.3",
+    "@tailwindcss/vite": "4.3.3"
+  },
+  "devDependencies": {
+    "@astrojs/check": "0.9.10",
+    "typescript": "7.0.2",
+    "@types/react": "19.3.0",
+    "@types/react-dom": "19.3.0"
   }
 }

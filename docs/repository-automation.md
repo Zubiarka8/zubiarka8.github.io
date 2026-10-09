@@ -2,7 +2,7 @@
 
 Use Node.js 24 for repository orchestration and `gh` for authenticated GitHub API operations. The existing Astro/TypeScript export code runs directly under Node, and the automation has no extra npm dependencies. The macOS shell launches commands; GitHub Actions validates and deploys. Python is not needed for these workflows. A macOS scheduler is unnecessary because execution is explicit or triggered by a repository push.
 
-The workspace entry point is `node scripts/repo.mjs`. It delegates to the single implementation in `prototype-hub/scripts/previews.mjs`. On the published main checkout, invoke `node scripts/previews.mjs` directly.
+The workspace entry point is `node scripts/repo.mjs`. It delegates to the single implementation in `prototype-hub/scripts/previews.mjs`. The root project also exposes `npm run pages:build`, `npm run pages:check`, and `npm run preview:release`. On a standalone published-main checkout, invoke `node scripts/previews.mjs` directly. Start with [the quick guide](QUICKSTART.md).
 
 | Command after the entry point | Process |
 | --- | --- |

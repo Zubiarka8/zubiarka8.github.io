@@ -113,11 +113,19 @@ async function hubFiles() {
   for (const dir of ['site', 'scripts', 'tests', 'docs', '.github']) files.push(...await filesUnder(path.join(root, dir)));
   return files;
 }
+async function hubTreeEntries(api) {
+  const entries = new Map((await treeEntries(root, await hubFiles(), api)).map((entry) => [entry.path, entry]));
+  const workspaceRoot = path.resolve(root, '..');
+  for (const file of ['package.json', 'scripts/repo.mjs', 'scripts/README.md', 'scripts/QUICKSTART.md']) {
+    const workspaceEntries = await treeEntries(workspaceRoot, [path.join(workspaceRoot, file)], api);
+    for (const entry of workspaceEntries) entries.set(entry.path, entry);
+  }
+  return [...entries.values()];
+}
 async function publishHub() {
   await build(); await validateSite(site, config);
   const api = github(config.repository);
-  const files = await hubFiles();
-  const result = await publishSnapshot(api, 'main', await treeEntries(root, files, api), 'Update prototype directory and preview automation');
+  const result = await publishSnapshot(api, 'main', await hubTreeEntries(api), 'Update prototype directory and preview automation');
   console.log(`${result.changed ? 'Published' : 'Already current'}: ${result.sha}\n${config.siteUrl}/`);
   return result;
 }
@@ -200,7 +208,7 @@ try {
       const { values } = parseArgs({ args, options: { base: { type: 'string' }, output: { type: 'string' } } });
       if (!/^[a-f0-9]{40}$/.test(values.base ?? '') || !values.output) throw new Error('Provide --base <complete main commit SHA> --output <file>.');
       await build(); await validateSite(site, config);
-      await writeFile(path.resolve(values.output), JSON.stringify({ base_tree: values.base, tree: await treeEntries(root, await hubFiles()) }, null, 2) + '\n');
+      await writeFile(path.resolve(values.output), JSON.stringify({ base_tree: values.base, tree: await hubTreeEntries(undefined) }, null, 2) + '\n');
       console.log(`Prepared reviewable GitHub tree request: ${path.resolve(values.output)}`);
       break;
     }
