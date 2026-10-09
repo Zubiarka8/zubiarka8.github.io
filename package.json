@@ -1,0 +1,16 @@
+{
+  "name": "portfolio-preview-automation",
+  "private": true,
+  "type": "module",
+  "engines": { "node": ">=24" },
+  "scripts": {
+    "build": "node scripts/previews.mjs build",
+    "check": "node scripts/previews.mjs check",
+    "test": "node --test tests/*.test.mjs",
+    "preview:export": "node scripts/previews.mjs export",
+    "preview:refresh": "node scripts/previews.mjs refresh",
+    "preview:publish": "node scripts/previews.mjs publish-prototype",
+    "hub:publish": "node scripts/previews.mjs publish-hub",
+    "verify:public": "node scripts/previews.mjs verify"
+  }
+}
