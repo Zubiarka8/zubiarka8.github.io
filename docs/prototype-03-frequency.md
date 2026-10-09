@@ -47,11 +47,16 @@ The workspace has no Git metadata, and shell GitHub access fails DNS resolution.
 - `npm test`: blocked at the Astro build with astro: command not found. Generated route, metadata, and sitemap tests remain unverified.
 - Source review covers minimum 44px controls, native links, visible focus, non-sticky wrapping navigation, shrinking columns, long-name wrapping, both locales, no animation loops, static mobile geometry, and reduced motion. Actual rendering at 320/768/1024/1440px, screenshots, keyboard traversal, screen-reader behavior, and font metrics remain unverified. Chrome was not used.
 
-## Publication limitation
+## Publication
 
-GitHub connector reads succeed, but creating a tree returns HTTP 403, Resource not accessible by integration. Shell GitHub access fails DNS resolution. An escalated CLI request was rejected automatically by the environment's granular approval policy because sandbox approval is disabled. No branch commit or public review URL was created. The remote target branch remains at the baseline.
+GitHub CLI write access became available during the owner's publication request. The source and bilingual review exports are saved on prototype/03-frequency at commit ccf0cbc18b1023ffccee82a19a16a6fa4a16a635. The initial connector HTTP 403 and dependency DNS failures are recorded above as verification limits; publication succeeded through the CLI without escalating permissions.
 
-The source, both self-contained review pages, and a ready-to-submit Git tree payload are retained locally. Publication requires restoring write access to the existing GitHub repository. Do not present the standalone export as a verified production build or select this candidate as the final portfolio.
+- Spanish saved-revision preview: https://rawcdn.githack.com/Zubiarka8/zubiarka8.github.io/ccf0cbc18b1023ffccee82a19a16a6fa4a16a635/preview/es/index.html
+- English saved-revision preview: https://rawcdn.githack.com/Zubiarka8/zubiarka8.github.io/ccf0cbc18b1023ffccee82a19a16a6fa4a16a635/preview/en/index.html
+- Direct Spanish route: https://zubiarka8.github.io/prototypes/03-frequency/es/
+- Direct English route: https://zubiarka8.github.io/prototypes/03-frequency/en/
+
+The owner also authorized a bilingual directory on the main website containing direct links to all available prototypes. This separately publishes static review copies, without selecting Frequency as the final design or merging its source into main. The baseline and competing candidate branches are preserved.
 
 ## Standalone review export
 
@@ -59,4 +64,4 @@ The source, both self-contained review pages, and a ready-to-submit Git tree pay
 
 ## Next verification
 
-Once dependencies are available, run the type check and full site tests. Review both locales at 320, 768, 1024, and 1440px, using Tab, Enter, touch, reduced motion, and JavaScript disabled. Verify locale hash preservation and scrolling state changes. Save source and review export on prototype/03-frequency and use a revision-specific GitHack URL for each locale after write access is restored.
+Once dependencies are available, run the type check and full site tests. Review both locales at 320, 768, 1024, and 1440px, using Tab, Enter, touch, reduced motion, and JavaScript disabled. Verify locale hash preservation and scrolling state changes. The source and exports are saved; verify the published Pages routes after the deployment completes.
