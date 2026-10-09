@@ -1,42 +1,23 @@
-# Personal Portfolio
+# Frequency prototype
 
-Personal portfolio for Arkaitz Zubizarreta (`zubiarka8`), with Spanish and English content, focused on work opportunities and showcasing projects.
+An isolated candidate for `prototype/03-frequency`, based on `base/preconfiguration` commit `71238d76a73b3a2d406cdae434ddd5efa47b292e`. This folder preserves the workspace baseline and other candidates. Its remote branch has not been updated because GitHub integration write access is blocked.
 
-## Repository and Hosting
+Use Node.js 24. Run commands inside this folder:
 
-- Repository: [Zubiarka8/zubiarka8.github.io](https://github.com/Zubiarka8/zubiarka8.github.io)
-- Intended website URL: `https://zubiarka8.github.io/`
-- Default branch: `main`
-- Hosting: GitHub Pages, with deployment through GitHub Actions.
-- Site base path: `/`, without a `/portfolio/` prefix.
+```sh
+npm install
+npm run dev
+npm run check
+npm test
+npm run test:translations
+node --experimental-strip-types scripts/export-preview.mjs
+node --experimental-strip-types --test tests/frequency.test.mjs tests/translations.test.mjs
+```
 
-The starter uses Astro, React, TypeScript, and Tailwind CSS. Astro generates static Spanish and English pages; the language selector is a React component. Tailwind uses its Vite plugin. Initial personal content is present; the final visual direction remains pending.
+Open [Spanish review export](preview/es/index.html) or [English review export](preview/en/index.html) locally. These self-contained pages share the actual renderer, styles, data, and interaction script. They do not verify an Astro production build. Dependencies are unavailable due to registry DNS failure.
 
-## Development
+Read [design decisions and validation](docs/prototype-03-frequency.md). Contact is disabled. No production deployment or final design selection is authorized.
 
-Use Node.js 24 (see `.nvmrc`). Install dependencies with `npm install` and commit the generated `package-lock.json` before deploying. Subsequent clean installations should use `npm ci`.
+## Pending branch publication
 
-| Command | Purpose |
-| --- | --- |
-| `npm run dev` | Start the local development server. |
-| `npm run check` | Check Astro and TypeScript diagnostics. |
-| `npm run build` | Generate the static site in `dist/`. |
-| `npm run preview` | Preview the production output locally. |
-| `npm test` | Build and check language routes, metadata, sections, sitemap, and translations. |
-| `npm run test:translations` | Check translation completeness without installing dependencies. |
-
-Pages are available at `/es/` and `/en/`; `/` redirects to Spanish. Edit copy in `src/i18n/translations.ts`, identity/project/contact settings in `src/data/profile.ts`, the page structure in `src/pages/[locale]/index.astro`, and shared styling in `src/styles/global.css`. Contact is disabled until an approved public destination is supplied.
-
-The workflow in `.github/workflows/deploy.yml` checks types, builds, tests, and deploys on pushes to `main`. Manual deployment is also restricted to `main`. Dependencies and the lockfile must be installed before it can run. The starter is saved on `base/preconfiguration` and used as the starting point for four prototype branches. See [the prototype branch guide](docs/prototype-branches.md). Final publication remains pending.
-
-## Project Requirements
-
-The website presents a biography, a three-month web-development internship, technologies, development tools, AI tools, and the featured `mini-consumes-tokens` MCP project. See [the project brief](docs/portfolio-brief.md) and [ten visual references](docs/visual-references.md).
-
-Use English for project code, comments, documentation, tests, commits, and pull request descriptions. Communicate with the owner in Spanish. Public website content must support both Spanish and English.
-
-## Local Setup Status
-
-This workspace currently prevents creating `.git`. Local Git initialization, the `origin` remote, and synchronization of the existing local files are pending. Once filesystem permissions allow Git metadata, connect this folder to the repository without overwriting its remote history.
-
-The remote `main` branch contains the earlier initial README; the baseline and prototype branches preserve this history and add the local starter through the GitHub Git API. Dependency installation in this workspace failed with `ENOTFOUND registry.npmjs.org`. Compilation, type checks, and generated-site tests remain unverified until installation succeeds. Translation tests can run independently.
+`publication/tree.json` contains the complete source/preview update as a GitHub Git tree request, based on the verified baseline. When write access is restored, check that the target branch still has the recorded head before creating the tree and commit. Update only `prototype/03-frequency` with a non-forced ref update. If the branch has changed, inspect its new history and regenerate the request before publication. Do not update `main` or deploy.

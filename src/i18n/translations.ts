@@ -23,6 +23,20 @@ type Translation = {
     title: string;
     description: string;
   }>;
+  frequency: {
+    navigation: string;
+    current: string;
+    role: string;
+    signature: string;
+    projectHeading: string;
+    purposeTitle: string;
+    purpose: string;
+    processLabel: string;
+    steps: { index: string; find: string; context: string };
+    internship: string;
+    duration: string;
+    stack: string;
+  };
   footer: string;
 };
 
@@ -52,7 +66,21 @@ export const translations = {
       projects: { title: 'Proyectos', description: 'Mi proyecto destacado, con su código y documentación.' },
       contact: { title: 'Contacto', description: 'Puedes contactar conmigo a través de este enlace.' },
     },
-    footer: 'Portfolio en construcción.',
+    frequency: {
+      navigation: 'Explorar el portfolio',
+      current: 'Estás en',
+      role: 'Desarrollo web e interés por la IA',
+      signature: 'Una firma geométrica a partir de mis iniciales.',
+      projectHeading: 'Código que ayuda a consultar código.',
+      purposeTitle: 'Contexto centrado en lo que necesitas',
+      purpose: 'Cuando un asistente consulta un repositorio, puede acabar leyendo archivos completos una y otra vez. Este proyecto crea un índice local para localizar las partes relevantes del código.',
+      processLabel: 'Cómo se consulta el código',
+      steps: { index: 'Indexar el repositorio local', find: 'Localizar símbolos y relaciones', context: 'Consultar contexto específico' },
+      internship: 'Creación de una web',
+      duration: 'Tres meses de prácticas',
+      stack: 'Tecnologías del proyecto',
+    },
+    footer: 'Tecnología, curiosidad y proyectos propios.',
   },
   en: {
     title: 'Arkaitz Zubizarreta | Portfolio',
@@ -79,6 +107,20 @@ export const translations = {
       projects: { title: 'Projects', description: 'My featured project, with its source code and documentation.' },
       contact: { title: 'Contact', description: 'You can reach me through this link.' },
     },
-    footer: 'Portfolio under construction.',
+    frequency: {
+      navigation: 'Explore the portfolio',
+      current: 'You are in',
+      role: 'Web development and an interest in AI',
+      signature: 'A geometric signature made from my initials.',
+      projectHeading: 'Code that helps you query code.',
+      purposeTitle: 'Context focused on what you need',
+      purpose: 'When an assistant queries a repository, it can end up reading entire files repeatedly. This project builds a local index to find the relevant parts of the code.',
+      processLabel: 'How code is queried',
+      steps: { index: 'Index the local repository', find: 'Find symbols and relationships', context: 'Query specific context' },
+      internship: 'Building a website',
+      duration: 'Three-month internship',
+      stack: 'Project technologies',
+    },
+    footer: 'Technology, curiosity, and personal projects.',
   },
 } satisfies Record<Locale, Translation>;

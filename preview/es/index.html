@@ -1,0 +1,175 @@
+<!doctype html><html lang="es"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><meta name="description" content="Portfolio de Arkaitz Zubizarreta: desarrollo web, herramientas de IA y el proyecto MCP mini-consumes-tokens."><meta name="theme-color" content="#f4f8fa"><title>Arkaitz Zubizarreta | Portfolio</title><link rel="icon" href="../favicon.svg"><style>
+:root {
+  --color-paper: #f4f8fa;
+  --color-ink: #12313d;
+  --color-muted: #4d626c;
+  --color-line: #ccdade;
+  --color-accent: #006b70;
+  --color-highlight: #ffc0a1;
+  --font-sans: "Trebuchet MS", Arial, sans-serif;
+  --font-display: Impact, "Arial Narrow", sans-serif;
+}
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; scroll-padding-top: 2rem; }
+body { margin: 0; background: var(--color-paper); color: var(--color-ink); font-family: var(--font-sans); font-size: 1rem; line-height: 1.6; }
+a { color: inherit; text-underline-offset: .3em; -webkit-tap-highlight-color: transparent; }
+svg { display: block; max-width: 100%; }
+p, h1, h2, h3, h4, figure { margin: 0; }
+h1, h2, h3, h4 { line-height: 1.12; }
+p { max-width: 65ch; }
+[hidden] { display: none !important; }
+::selection { background: var(--color-highlight); color: var(--color-ink); }
+:focus-visible { outline: 3px solid var(--color-accent); outline-offset: 5px; }
+.project-section :focus-visible { outline-color: var(--color-highlight); }
+.skip-link { position: absolute; top: 1rem; left: 1rem; transform: translateY(-200%); background: var(--color-ink); color: var(--color-paper); padding: 1rem; z-index: 10; }
+.skip-link:focus { transform: translateY(0); }
+.site-shell { max-width: 88rem; margin: auto; padding: 0 1.25rem; }
+.site-header { display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; gap: 1rem; padding: 1.5rem 0; }
+.wordmark { display: flex; gap: .75rem; align-items: center; text-decoration: none; font-weight: 700; min-height: 44px; }
+.wordmark .section-signal { width: 3rem; }
+.language-switcher { display: flex; flex-wrap: wrap; gap: .25rem; }
+.language-switcher a { padding: .625rem .75rem; min-height: 44px; text-decoration: none; border-radius: .25rem; }
+.language-switcher [aria-current="page"] { background: var(--color-ink); color: var(--color-paper); }
+.section-navigation { display: flex; flex-wrap: wrap; gap: .25rem 1rem; align-items: center; border-block: 1px solid var(--color-line); padding: .75rem 0; }
+.section-navigation a { display: flex; align-items: center; min-height: 44px; font-size: .9375rem; text-decoration: none; padding: .25rem .5rem; border-bottom: 3px solid transparent; }
+.section-navigation a[aria-current] { background: var(--color-highlight); border-bottom-color: var(--color-ink); }
+.current-section { flex-basis: 100%; font-size: .875rem; color: var(--color-muted); padding: .5rem; }
+.current-section strong { color: var(--color-ink); margin-left: .5rem; }
+.introduction { padding: 3rem 0; display: grid; gap: 1.5rem; align-items: center; }
+.identity, .signal-figure { min-width: 0; }
+.role-label { font-size: 1rem; color: var(--color-accent); margin-bottom: 1.5rem; }
+h1 { font-family: var(--font-display); font-weight: 400; font-size: clamp(2.75rem, 7.4vw, 7rem); letter-spacing: -.02em; line-height: 1.04; overflow-wrap: anywhere; }
+h1 span { display: block; }
+.intro-copy { margin-top: 1.5rem; max-width: 43ch; font-size: 1.125rem; color: var(--color-muted); }
+.intro-links { display: flex; flex-wrap: wrap; gap: .75rem 1.5rem; align-items: center; margin-top: 1.5rem; }
+.intro-links a { display: inline-flex; min-height: 48px; align-items: center; }
+.primary-link { background: var(--color-accent); color: white; padding: .75rem 1.25rem; border-radius: .25rem; text-decoration: none; }
+.signal-figure { position: relative; padding: .75rem 1rem; border-left: .25rem solid var(--color-highlight); }
+.signature { width: 11rem; height: auto; }
+.signature path { fill: none; stroke: var(--color-accent); stroke-width: 3; stroke-linecap: square; stroke-linejoin: miter; opacity: .35; }
+.signature path.is-active { stroke: var(--color-ink); stroke-width: 6; opacity: 1; }
+.signal-figure figcaption { margin-top: .5rem; color: var(--color-muted); font-size: .8125rem; max-width: 28ch; }
+.section-signal { width: 3rem; height: 1.5rem; flex-shrink: 0; }
+.section-signal path { fill: none; stroke: currentColor; stroke-width: 2; }
+[data-signal-active="true"] .section-heading .section-signal path { stroke-width: 4; }
+.section-heading { display: flex; gap: .75rem; align-items: flex-start; margin-bottom: 1.5rem; }
+h2 { font-size: clamp(1.5rem, 2.6vw, 2rem); font-weight: 600; letter-spacing: -.035em; overflow-wrap: anywhere; }
+.project-section { color: var(--color-paper); background: var(--color-ink); padding: 2rem 1.25rem; margin-inline: -1.25rem; }
+.project-section > .section-heading { color: var(--color-highlight); margin-bottom: 2.5rem; }
+.project-section article { display: grid; gap: 3rem; }
+.project-main, .project-detail { min-width: 0; }
+.project-label { color: var(--color-highlight); font-size: .875rem; margin-bottom: 1rem; }
+.project-main h3 { font-size: clamp(1.75rem, 3.8vw, 3.25rem); letter-spacing: -.045em; overflow-wrap: anywhere; max-width: 18ch; }
+.project-headline { font-size: 1.25rem; margin-top: 1.5rem; margin-bottom: 1rem; }
+.project-main > p:last-of-type, .project-detail p { color: #d3e0e5; }
+.source-link { display: inline-flex; align-items: center; justify-content: space-between; gap: 1.5rem; min-height: 48px; margin-top: 2rem; border-bottom: 1px solid var(--color-highlight); color: var(--color-highlight); text-decoration: none; max-width: 100%; }
+.project-detail { border-top: 1px solid #52717c; padding-top: 2rem; }
+h4 { font-size: 1.125rem; margin-bottom: 1rem; }
+.project-process { list-style: none; padding: 0; margin: 2rem 0; counter-reset: lookup; }
+.project-process li { counter-increment: lookup; display: flex; gap: 1rem; padding: .875rem 0; border-top: 1px solid #52717c; }
+.project-process li::before { content: counter(lookup); color: var(--color-highlight); }
+.stack-title { font-size: .875rem; font-weight: 400; }
+.project-stack { padding: 0; margin: 0; list-style: none; display: flex; flex-wrap: wrap; gap: .5rem 1rem; font-weight: 700; }
+.background-sections { display: grid; gap: 2.5rem; padding: 3rem 0; }
+.background-sections section { min-width: 0; }
+.background-sections p, .skill-section p { color: var(--color-muted); }
+.internship-duration { display: inline-block; background: var(--color-highlight); padding: .25rem .75rem; color: var(--color-ink) !important; margin-bottom: 1rem; }
+.background-sections h3 { font-size: 1.25rem; margin-bottom: 1rem; }
+.skill-section { padding: 2rem 0; border-top: 1px solid var(--color-line); display: grid; gap: 1.5rem; }
+.skill-section > div, .item-list { min-width: 0; }
+.skill-section .section-heading { margin-bottom: .75rem; }
+.item-list { list-style: none; padding: 0; margin: 0; display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: .5rem 1rem; align-content: start; }
+.item-list li { padding: .5rem 0; overflow-wrap: anywhere; border-bottom: 1px solid var(--color-line); }
+.site-footer { border-top: 1px solid var(--color-line); margin-top: 1rem; padding: 2rem 0; display: flex; flex-wrap: wrap; gap: .5rem 2rem; justify-content: space-between; font-size: .875rem; color: var(--color-muted); }
+.site-footer a { min-height: 44px; display: inline-flex; align-items: center; }
+@media (min-width: 768px) {
+  .site-shell { padding-inline: 2.5rem; }
+  .introduction { grid-template-columns: minmax(0, 1.3fr) minmax(0, 1fr); padding-block: 4rem; gap: 2rem; }
+  .signal-figure { border-left: none; padding: 0; }
+  .signature { width: 100%; }
+  .signal-figure figcaption { margin: 0 auto; text-align: center; }
+  .background-sections { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 4rem; padding-block: 4rem; }
+  .project-section { padding: 3rem 2.5rem; margin-inline: 0; border-radius: .5rem; }
+  .skill-section { grid-template-columns: minmax(0, 1fr) minmax(0, 1.4fr); gap: 3rem; padding-block: 2.5rem; }
+  .item-list { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+}
+@media (min-width: 1024px) {
+  .site-shell { padding-inline: 4rem; }
+  .introduction { padding-block: 5rem; }
+  .project-section article { grid-template-columns: minmax(0, 1.15fr) minmax(0, 1fr); gap: 4rem; }
+  .project-detail { border-top: none; border-left: 1px solid #52717c; padding: 0 0 0 3rem; }
+}
+@media (max-width: 767px) {
+  .signature path { opacity: .4; stroke-width: 3; stroke: var(--color-accent); }
+  .signature path:first-child { opacity: 1; stroke-width: 6; stroke: var(--color-ink); }
+}
+@media (hover: hover) and (pointer: fine) {
+  .section-navigation a:hover, .language-switcher a:not([aria-current]):hover { background: var(--color-line); }
+  .source-link:hover { color: white; }
+  .primary-link:hover { background: var(--color-ink); }
+}
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  *, *::before, *::after { transition: none !important; animation: none !important; }
+}
+</style></head><body><a href="#main" class="skip-link">Saltar al contenido</a><div class="site-shell" data-frequency>
+<header class="site-header"><a class="wordmark" href="index.html" aria-label="Arkaitz Zubizarreta"><svg class="section-signal" viewBox="0 0 80 36" aria-hidden="true"><path d="M2 32 16 4 30 32H16L44 4H30M26 32 40 4 54 32H40L68 4H54"/></svg><span>Arkaitz Zubizarreta</span></a><nav class="language-switcher" aria-label="Seleccionar idioma"><a data-language href="../es/index.html" hreflang="es" lang="es" aria-current="page">Español</a><a data-language href="../en/index.html" hreflang="en" lang="en">English</a></nav></header>
+<nav class="section-navigation" aria-label="Explorar el portfolio"><a href="#projects" data-section-link="projects">Proyectos</a><a href="#about" data-section-link="about">Sobre mí</a><a href="#experience" data-section-link="experience">Experiencia</a><a href="#languages" data-section-link="languages">Lenguajes y tecnologías</a><a href="#tools" data-section-link="tools">Herramientas</a><a href="#ai" data-section-link="ai">Herramientas de IA</a><p class="current-section" hidden><span>Estás en</span> <strong data-current-section>Arkaitz Zubizarreta</strong></p></nav>
+<main id="main" tabindex="-1">
+<section id="introduction" class="introduction" aria-labelledby="introduction-title" data-signal-section data-section-label="Arkaitz Zubizarreta"><div class="identity"><p class="role-label">Desarrollo web e interés por la IA</p><h1 id="introduction-title"><span>Arkaitz</span> <span>Zubizarreta</span></h1><p class="intro-copy">Me apasionan la tecnología y la innovación. Busco oportunidades de trabajo donde seguir aprendiendo y aportar con mis proyectos.</p><div class="intro-links"><a class="primary-link" href="#projects">Ver proyectos</a><a href="https://github.com/Zubiarka8">Mi GitHub</a></div></div><figure class="signal-figure"><svg class="signature" viewBox="0 0 450 340" aria-hidden="true" data-signal><g><path d="M 28 290 L 128 65 L 228 290 L 128 290 L 298 120 L 198 120" data-signal-path="introduction" class="is-active"/><path d="M 47 290 L 147 65 L 247 290 L 147 290 L 317 120 L 217 120" data-signal-path="projects"/><path d="M 66 290 L 166 65 L 266 290 L 166 290 L 336 120 L 236 120" data-signal-path="about"/><path d="M 85 290 L 185 65 L 285 290 L 185 290 L 355 120 L 255 120" data-signal-path="experience"/><path d="M 104 290 L 204 65 L 304 290 L 204 290 L 374 120 L 274 120" data-signal-path="languages"/><path d="M 123 290 L 223 65 L 323 290 L 223 290 L 393 120 L 293 120" data-signal-path="tools"/><path d="M 142 290 L 242 65 L 342 290 L 242 290 L 412 120 L 312 120" data-signal-path="ai"/></g></svg><figcaption>Una firma geométrica a partir de mis iniciales.</figcaption></figure></section>
+<section id="projects" class="project-section" aria-labelledby="projects-title" data-signal-section data-section-label="Proyectos"><div class="section-heading"><svg class="section-signal" viewBox="0 0 80 36" aria-hidden="true"><path d="M2 32 16 4 30 32H16L44 4H30M26 32 40 4 54 32H40L68 4H54"/></svg><h2 id="projects-title">Proyectos</h2></div><article aria-labelledby="featured-project-title"><div class="project-main"><p class="project-label">Proyecto destacado</p><h3 id="featured-project-title">mini-consumes-tokens</h3><p class="project-headline">Código que ayuda a consultar código.</p><p>Un servidor MCP que ayuda a las herramientas de IA a consultar código con menos contexto. Indexa el repositorio localmente y permite localizar símbolos, referencias y relaciones entre funciones sin releer archivos completos.</p><a class="source-link" href="https://github.com/Zubiarka8/mini-consumes-tokens">Ver código y documentación<span aria-hidden="true">↗</span></a></div><div class="project-detail"><h4>Contexto centrado en lo que necesitas</h4><p>Cuando un asistente consulta un repositorio, puede acabar leyendo archivos completos una y otra vez. Este proyecto crea un índice local para localizar las partes relevantes del código.</p><ol class="project-process" aria-label="Cómo se consulta el código"><li>Indexar el repositorio local</li><li>Localizar símbolos y relaciones</li><li>Consultar contexto específico</li></ol><h4 class="stack-title">Tecnologías del proyecto</h4><ul class="project-stack"><li>Rust</li><li>MCP</li><li>SQLite</li><li>Tree-sitter</li></ul></div></article></section>
+<div class="background-sections"><section id="about" aria-labelledby="about-title" data-signal-section data-section-label="Sobre mí"><div class="section-heading"><svg class="section-signal" viewBox="0 0 80 36" aria-hidden="true"><path d="M2 32 16 4 30 32H16L44 4H30M26 32 40 4 54 32H40L68 4H54"/></svg><h2 id="about-title">Sobre mí</h2></div><p>Soy Arkaitz. Me interesa crear aplicaciones y explorar cómo la inteligencia artificial puede ayudar en el desarrollo. En mini-consumes-tokens trabajo en una herramienta para reducir el contexto que necesitan los asistentes de IA al consultar código.</p></section><section id="experience" aria-labelledby="experience-title" data-signal-section data-section-label="Experiencia"><div class="section-heading"><svg class="section-signal" viewBox="0 0 80 36" aria-hidden="true"><path d="M2 32 16 4 30 32H16L44 4H30M26 32 40 4 54 32H40L68 4H54"/></svg><h2 id="experience-title">Experiencia</h2></div><p class="internship-duration">Tres meses de prácticas</p><h3>Creación de una web</h3><p>Tres meses de prácticas dedicados a crear una web. Una experiencia con un proyecto concreto que forma parte de mi trayectoria en desarrollo.</p></section></div>
+<div class="skill-sections"><section id="languages" class="skill-section" aria-labelledby="languages-title" data-signal-section data-section-label="Lenguajes y tecnologías"><div><div class="section-heading"><svg class="section-signal" viewBox="0 0 80 36" aria-hidden="true"><path d="M2 32 16 4 30 32H16L44 4H30M26 32 40 4 54 32H40L68 4H54"/></svg><h2 id="languages-title">Lenguajes y tecnologías</h2></div><p>Lenguajes, frameworks y tecnologías que conozco.</p></div><ul class="item-list"><li>HTML</li><li>CSS</li><li>Bootstrap</li><li>JavaScript</li><li>Python</li><li>Flask</li><li>Django</li><li>PHP</li><li>SQL</li><li>NoSQL</li><li>Java</li><li>C#</li><li>.NET MAUI</li><li>Markdown</li></ul></section><section id="tools" class="skill-section" aria-labelledby="tools-title" data-signal-section data-section-label="Herramientas"><div><div class="section-heading"><svg class="section-signal" viewBox="0 0 80 36" aria-hidden="true"><path d="M2 32 16 4 30 32H16L44 4H30M26 32 40 4 54 32H40L68 4H54"/></svg><h2 id="tools-title">Herramientas</h2></div><p>Las herramientas que utilizo para desarrollar, gestionar datos y organizar mi trabajo.</p></div><ul class="item-list"><li>Visual Studio Code</li><li>Cursor</li><li>SQLite</li><li>MySQL</li><li>IntelliJ IDEA</li><li>Eclipse</li><li>DBeaver</li><li>Docker</li><li>GitHub</li><li>Apache</li><li>Git</li><li>Trello</li></ul></section><section id="ai" class="skill-section" aria-labelledby="ai-title" data-signal-section data-section-label="Herramientas de IA"><div><div class="section-heading"><svg class="section-signal" viewBox="0 0 80 36" aria-hidden="true"><path d="M2 32 16 4 30 32H16L44 4H30M26 32 40 4 54 32H40L68 4H54"/></svg><h2 id="ai-title">Herramientas de IA</h2></div><p>Las herramientas de inteligencia artificial que utilizo.</p></div><ul class="item-list"><li>Cursor</li><li>GitHub Copilot</li><li>Codex</li><li>ChatGPT</li><li>Claude</li></ul></section></div>
+
+</main><footer class="site-footer"><p>Arkaitz Zubizarreta</p><p>Tecnología, curiosidad y proyectos propios.</p><a href="https://github.com/Zubiarka8/zubiarka8.github.io">GitHub</a></footer></div><script>function enhanceFrequency() {
+  const root = document.querySelector             ('[data-frequency]');
+  if (!root) return;
+  const sections = Array.from(root.querySelectorAll             ('[data-signal-section]'));
+  const links = Array.from(root.querySelectorAll                   ('[data-section-link]'));
+  const paths = Array.from(root.querySelectorAll                ('[data-signal-path]'));
+  const currentLabel = root.querySelector             ('[data-current-section]');
+  const status = root.querySelector             ('.current-section');
+  let currentId = '';
+  function activate(id        ) {
+    const section = sections.find((item) => item.id === id);
+    if (!section || currentId === id) return;
+    currentId = id;
+    sections.forEach((item) => { item.dataset.signalActive = String(item.id === id); });
+    links.forEach((link) => {
+      if (link.dataset.sectionLink === id) link.setAttribute('aria-current', 'location');
+      else link.removeAttribute('aria-current');
+    });
+    paths.forEach((path) => path.classList.toggle('is-active', path.dataset.signalPath === id));
+    if (currentLabel) currentLabel.textContent = section.dataset.sectionLabel ?? '';
+  }
+  activate(window.location.hash.slice(1) || 'introduction');
+  if (!currentId) activate('introduction');
+  if (status) status.hidden = false;
+  root.addEventListener('click', (event) => {
+    if (!(event.target instanceof Element)) return;
+    const anchor = event.target.closest                   ('a[href^="#"]');
+    if (anchor) activate(anchor.hash.slice(1));
+  });
+  root.addEventListener('focusin', (event) => {
+    if (!(event.target instanceof Element)) return;
+    const section = event.target.closest             ('[data-signal-section]');
+    const link = event.target.closest                   ('[data-section-link]');
+    if (section) activate(section.id);
+    else if (link) activate(link.dataset.sectionLink ?? '');
+  });
+  window.addEventListener('hashchange', () => activate(window.location.hash.slice(1) || 'introduction'));
+  // Observe only on larger screens: the phone signature stays compact and still.
+  if ('IntersectionObserver' in window && window.matchMedia('(min-width: 768px)').matches) {
+    const observer = new IntersectionObserver((entries) => {
+      const visible = entries.filter((entry) => entry.isIntersecting)
+        .sort((a, b) => a.boundingClientRect.top - b.boundingClientRect.top);
+      if (visible[0]) activate(visible[0].target.id);
+    }, { rootMargin: '-15% 0px -55% 0px', threshold: 0 });
+    sections.forEach((section) => observer.observe(section));
+  }
+  root.querySelectorAll                   ('[data-language]').forEach((link) => {
+    link.addEventListener('click', () => { link.hash = window.location.hash; });
+  });
+}
+
+enhanceFrequency();</script></body></html>
