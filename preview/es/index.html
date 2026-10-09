@@ -1,0 +1,193 @@
+<!doctype html>
+<html lang="es"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><meta name="description" content="Portfolio web personal de Arkaitz Zubizarreta: experiencia, habilidades de desarrollo web, herramientas de IA y proyectos personales."><meta name="theme-color" content="#ffffff"><title>Arkaitz Zubizarreta | Portfolio</title><style>
+:root {
+  --color-paper: #ffffff;
+  --color-ink: #123d46;
+  --color-muted: #526970;
+  --color-surface: #edf3f2;
+  --color-accent: #086773;
+  --color-selection: #e7f3b1;
+  --font-sans: "Gill Sans", "Trebuchet MS", sans-serif;
+  --font-mono: Consolas, "SFMono-Regular", monospace;
+}
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; scroll-padding-top: 2rem; }
+body { margin: 0; background: var(--color-paper); color: var(--color-ink); font-family: var(--font-sans); line-height: 1.5; }
+a { color: inherit; text-underline-offset: 0.3em; }
+button { font: inherit; cursor: pointer; }
+p, h1, h2, h3, h4, ol, ul { margin: 0; }
+p { max-width: 65ch; }
+h1, h2, h3, h4 { font-weight: 600; }
+h1, h2 { text-wrap: balance; }
+ul, ol { padding: 0; }
+[hidden] { display: none !important; }
+::selection { background: var(--color-selection); color: var(--color-ink); }
+:focus-visible { outline: 3px solid var(--color-accent); outline-offset: 5px; }
+.skip-link { position: absolute; top: 1rem; left: 1rem; transform: translateY(-200%); background: var(--color-ink); color: var(--color-paper); padding: 1rem; z-index: 10; }
+.skip-link:focus { transform: translateY(0); }
+.site-shell { max-width: 88rem; margin: auto; padding: 0 clamp(1rem, 4vw, 4rem); }
+.site-header { display: flex; align-items: center; flex-wrap: wrap; gap: 1rem 2rem; padding: 1.5rem 0; border-bottom: 1px solid var(--color-ink); }
+.wordmark { font-size: 2rem; font-weight: 700; letter-spacing: -0.08em; text-decoration: none; min-width: 44px; }
+.wordmark span { color: var(--color-accent); margin-left: 0.25rem; }
+.main-navigation { display: flex; align-items: center; flex-wrap: wrap; gap: 0.5rem 1.5rem; margin-left: auto; }
+.main-navigation a, .language-switcher a { display: inline-flex; align-items: center; min-height: 44px; }
+.main-navigation a { text-decoration: none; }
+.language-switcher { display: flex; gap: 0.75rem; }
+.language-switcher a { font-size: 0.875rem; text-decoration: none; color: var(--color-muted); padding: 0.25rem; }
+.language-switcher a[aria-current] { color: var(--color-ink); text-decoration: underline; text-decoration-thickness: 2px; }
+.introduction { display: grid; grid-template-columns: minmax(0, 1.7fr) minmax(0, 1fr); align-items: end; gap: 3rem; padding-top: clamp(3rem, 7vw, 6rem); }
+.role-label { margin-bottom: 1.25rem; font-size: 1rem; }
+h1 { font-size: clamp(2.75rem, 7.3vw, 7.75rem); line-height: 0.95; letter-spacing: -0.055em; }
+h1 span { display: block; overflow-wrap: anywhere; }
+.intro-copy > p { font-family: Georgia, serif; font-size: clamp(1rem, 1.5vw, 1.25rem); line-height: 1.65; }
+.intro-links { display: flex; flex-wrap: wrap; align-items: center; gap: 1rem 1.5rem; margin-top: 1.75rem; }
+.intro-links a { display: inline-flex; align-items: center; min-height: 44px; }
+.primary-link { background: var(--color-ink); color: var(--color-paper); padding: 0.75rem 1.25rem; border-radius: 0.25rem; text-decoration: none; }
+.progression-intro { grid-column: 1 / -1; margin-top: 1rem; }
+.progression-intro > p { font-size: clamp(1.25rem, 2.4vw, 2rem); letter-spacing: -0.02em; margin-bottom: 1.5rem; }
+.progression-band { display: grid; grid-template-columns: 1.25fr 1fr 0.8fr; list-style: none; }
+.progression-band li { background: var(--color-surface); border-bottom: 4px solid var(--color-ink); }
+.progression-band li:nth-child(2) { background: var(--color-ink); color: var(--color-paper); }
+.progression-band li:nth-child(3) { background: var(--color-selection); }
+.progression-band a { display: flex; align-items: center; gap: 1rem; padding: 1.5rem; font-size: 1.5rem; text-decoration: none; min-height: 5rem; }
+.stage-index { font-size: 0.875rem; }
+.band-arrow { margin-left: auto; font-size: 1.5rem; }
+.progression-band li:nth-child(3) .band-arrow { display: none; }
+.progression-band li:nth-child(2) a:focus-visible { outline-color: var(--color-selection); outline-offset: -7px; }
+.project-section { padding-top: clamp(3rem, 7vw, 6rem); }
+.section-label { font-size: 0.875rem; margin-bottom: 1rem; color: var(--color-muted); }
+.project-introduction h2 { font-size: clamp(2rem, 4.4vw, 4.5rem); line-height: 1.1; max-width: 22ch; letter-spacing: -0.035em; }
+.project-introduction > p:last-child { margin-top: 1.5rem; color: var(--color-muted); font-family: Georgia, serif; font-size: 1.125rem; }
+.project-evidence { display: grid; grid-template-columns: minmax(0, 1.4fr) minmax(0, 1fr); align-items: end; gap: 3rem; margin-top: 3rem; padding: 2rem 0; border-top: 1px solid var(--color-ink); }
+.project-evidence h3 { font-size: clamp(1.5rem, 3vw, 2.5rem); overflow-wrap: anywhere; letter-spacing: -0.025em; }
+.project-evidence p:last-child { margin-top: 1rem; color: var(--color-muted); }
+.project-resources { display: flex; flex-direction: column; align-items: flex-start; gap: 1.5rem; }
+.project-stack { display: flex; flex-wrap: wrap; gap: 0.5rem 1rem; list-style: none; font-size: 0.875rem; }
+.project-stack li { border-bottom: 2px solid var(--color-accent); padding-bottom: 0.25rem; }
+.source-link { display: inline-flex; align-items: center; gap: 1rem; min-height: 44px; }
+.story-layout { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 4rem; align-items: start; padding: 1rem 0 4rem; }
+.story-stages { list-style: none; }
+.story-stages li { display: grid; grid-template-columns: 2.5rem minmax(0, 1fr); gap: 1rem; position: relative; padding-bottom: 2.5rem; }
+.story-stages li:last-child { padding-bottom: 0; }
+.story-stages li:not(:last-child)::before { content: ''; position: absolute; top: 2.75rem; bottom: 0.5rem; left: 1.2rem; width: 2px; background: var(--color-surface); }
+.stage-number { display: flex; align-items: center; justify-content: center; height: 2.5rem; border: 1px solid var(--color-accent); border-radius: 50%; font-size: 0.875rem; }
+.story-stages h4 { font-size: 1.375rem; line-height: 1.25; padding-top: 0.25rem; }
+.story-stages p { font-family: Georgia, serif; line-height: 1.7; color: var(--color-muted); margin-top: 0.75rem; }
+.comparison { background: var(--color-ink); color: var(--color-paper); border-radius: 0.5rem; overflow: hidden; min-width: 0; }
+.comparison :focus-visible { outline-color: var(--color-selection); outline-offset: -4px; }
+.comparison-header { padding: 1.5rem; }
+.example-label { display: inline-block; font-size: 0.75rem; background: var(--color-selection); color: var(--color-ink); padding: 0.25rem 0.5rem; margin-bottom: 1rem; border-radius: 0.125rem; }
+.comparison h4 { font-size: 1.5rem; }
+.comparison-header p { font-size: 0.875rem; margin-top: 0.5rem; }
+.comparison-controls { display: flex; flex-wrap: wrap; gap: 0.5rem; padding: 0 1.5rem 1.5rem; }
+.comparison-controls button { background: transparent; border: 1px solid var(--color-surface); border-radius: 0.25rem; padding: 0.625rem 0.75rem; color: inherit; min-height: 44px; font-size: 0.875rem; transition: transform 120ms cubic-bezier(0.23, 1, 0.32, 1), background-color 140ms ease, color 140ms ease; }
+.comparison-controls button[aria-pressed="true"] { background: var(--color-paper); color: var(--color-ink); }
+.comparison-controls button:active { transform: scale(0.97); }
+.comparison[data-keyboard="true"] button { transition: none; transform: none; }
+.code-heading { display: flex; justify-content: space-between; flex-wrap: wrap; gap: 0.5rem; padding: 0.75rem 1.5rem; background: #164954; font-size: 0.75rem; }
+.comparison pre { margin: 0; padding: 1rem 0; min-height: 23rem; font-family: var(--font-mono); font-size: 0.8125rem; line-height: 1.6; white-space: pre-wrap; overflow-wrap: anywhere; tab-size: 2; }
+.comparison code { font-family: inherit; }
+.code-line { display: grid; grid-template-columns: 2rem minmax(0, 1fr); padding: 0 1rem; white-space: pre-wrap; }
+.line-number { color: inherit; opacity: 0.8; user-select: none; }
+.relevant-line { background: var(--color-selection); color: var(--color-ink); border-left: 3px solid var(--color-paper); padding-left: calc(1rem - 3px); }
+.comparison-status { padding: 1rem 1.5rem; font-size: 0.875rem; min-height: 6.5rem; }
+.comparison-note { padding: 1rem 1.5rem 1.5rem; font-size: 0.75rem; border-top: 1px solid #6c929b; }
+.background-sections { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 4rem; background: var(--color-surface); padding: 2.5rem; margin-bottom: 2rem; border-radius: 0.5rem; }
+.background-sections h2 { font-size: 1.125rem; margin-bottom: 1.25rem; }
+.background-sections h3 { font-size: 1.5rem; line-height: 1.25; margin-bottom: 1rem; }
+.background-sections p { font-family: Georgia, serif; line-height: 1.7; }
+.skill-section { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1.5fr); gap: 3rem; padding: 2rem 0; border-bottom: 1px solid #c7d6d7; }
+.skill-section h2 { font-size: 1.75rem; line-height: 1.2; }
+.skill-section p { color: var(--color-muted); margin-top: 0.75rem; }
+.item-list { display: flex; flex-wrap: wrap; align-content: start; gap: 0.625rem 1.25rem; list-style: none; }
+.item-list li { font-size: 1.125rem; padding: 0.25rem 0; }
+.contact-section { padding: 2rem 0; }
+.site-footer { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 1rem; padding: 2rem 0; font-size: 0.875rem; color: var(--color-muted); }
+@media (hover: hover) and (pointer: fine) {
+  .main-navigation a:hover, .language-switcher a:hover { text-decoration: underline; }
+  .primary-link:hover { background: var(--color-accent); }
+  .progression-band a:hover { text-decoration: underline; }
+}
+@media (max-width: 1023px) {
+  .introduction { grid-template-columns: minmax(0, 1fr); gap: 2rem; }
+  h1 { font-size: clamp(2.75rem, 10vw, 6rem); }
+  .intro-copy { max-width: 42rem; }
+  .story-layout { grid-template-columns: minmax(0, 1fr); gap: 2rem; }
+  .comparison { max-width: 42rem; width: 100%; }
+  .comparison pre { min-height: 0; }
+  .comparison-status { min-height: 0; }
+}
+@media (max-width: 639px) {
+  .site-header { gap: 0.5rem 1rem; }
+  .main-navigation { order: 3; width: 100%; margin: 0; gap: 0.5rem 1rem; font-size: 0.875rem; }
+  .language-switcher { margin-left: auto; }
+  .progression-band { grid-template-columns: minmax(0, 1fr); }
+  .progression-band a { padding: 1rem; min-height: 44px; font-size: 1.125rem; }
+  .progression-band li { border-bottom-width: 2px; }
+  .band-arrow { transform: rotate(90deg); }
+  .project-evidence, .background-sections, .skill-section { grid-template-columns: minmax(0, 1fr); gap: 1.5rem; }
+  .story-layout { padding-bottom: 2.5rem; }
+  .background-sections { padding: 1.5rem; gap: 2rem; }
+  .comparison-header, .comparison-status, .comparison-note { padding-left: 1rem; padding-right: 1rem; }
+  .comparison-controls { padding-left: 1rem; padding-right: 1rem; }
+  .comparison-controls button { flex: 1 1 8rem; }
+}
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  *, *::before, *::after { transition: none !important; animation: none !important; }
+  .comparison-controls button:active { transform: none; }
+}
+
+.portfolio-label { grid-column: 1 / -1; color: var(--color-muted); font-size: 1rem; }
+</style><link rel="icon" href="../favicon.svg"><link rel="canonical" href="https://zubiarka8.github.io/es/"><link rel="alternate" hreflang="es" href="https://zubiarka8.github.io/es/"><link rel="alternate" hreflang="en" href="https://zubiarka8.github.io/en/"></head>
+<body><a href="#main" class="skip-link">Saltar al contenido</a><div class="site-shell">
+<header class="site-header"><a href="index.html" class="wordmark" aria-label="Arkaitz Zubizarreta">az<span aria-hidden="true">/</span></a><nav class="main-navigation" aria-label="Navegación principal"><a href="#projects">Proyectos</a><a href="#experience">Experiencia</a><a href="#languages">Lenguajes y tecnologías</a></nav><nav class="language-switcher" aria-label="Seleccionar idioma"><a data-language href="../es/index.html" hreflang="es" lang="es" aria-current="page">Español</a><a data-language href="../en/index.html" hreflang="en" lang="en">English</a></nav></header>
+<main id="main"><section class="introduction" aria-labelledby="introduction-title"><p class="portfolio-label">Portfolio web personal</p><div class="identity"><p class="role-label">Desarrollo web e inteligencia artificial</p><h1 id="introduction-title"><span>Arkaitz</span><span>Zubizarreta</span></h1></div><div class="intro-copy"><p>Soy Arkaitz Zubizarreta. En este portfolio reúno mi experiencia, las tecnologías con las que trabajo y mis proyectos personales. Busco oportunidades de trabajo donde seguir aprendiendo y aportar.</p><div class="intro-links"><a href="#projects" class="primary-link">Ver proyectos</a><a href="https://github.com/Zubiarka8">Mi GitHub</a></div></div><div class="progression-intro"><p>De una idea a una herramienta útil.</p><ol class="progression-band" aria-label="Cómo funciona la consulta de código"><li><a href="#stage-problem"><span class="stage-index">01</span><span>Leer</span><span aria-hidden="true" class="band-arrow">→</span></a></li><li><a href="#stage-approach"><span class="stage-index">02</span><span>Indexar</span><span aria-hidden="true" class="band-arrow">→</span></a></li><li><a href="#stage-result"><span class="stage-index">03</span><span>Consultar</span><span aria-hidden="true" class="band-arrow">→</span></a></li></ol></div></section>
+<section id="projects" class="project-section" aria-labelledby="projects-title"><div class="project-introduction"><p class="section-label">Proyectos</p><h2 id="projects-title">El código ya está ahí. El contexto hay que encontrarlo.</h2><p>Así aborda mini-consumes-tokens la consulta de código desde herramientas de IA.</p></div><article aria-labelledby="featured-project-title"><div class="project-evidence"><div><p class="section-label">Proyecto destacado</p><h3 id="featured-project-title">mini-consumes-tokens</h3><p>Un servidor MCP que ayuda a las herramientas de IA a consultar código con menos contexto. Indexa el repositorio localmente y permite localizar símbolos, referencias y relaciones entre funciones sin releer archivos completos.</p></div><div class="project-resources"><ul class="project-stack"><li>Rust</li><li>MCP</li><li>SQLite</li><li>Tree-sitter</li></ul><a class="source-link" href="https://github.com/Zubiarka8/mini-consumes-tokens">Ver código y documentación<span aria-hidden="true">↗</span></a></div></div>
+<div class="story-layout"><ol class="story-stages" aria-label="Cómo funciona la consulta de código"><li id="stage-problem"><span class="stage-number" aria-hidden="true">01</span><div><h4>Volver a leer el mismo código</h4><p>Para encontrar una función o saber dónde se usa, un asistente de IA puede acabar leyendo archivos completos una y otra vez. Esa lectura ocupa parte de su contexto disponible.</p></div></li><li id="stage-approach"><span class="stage-number" aria-hidden="true">02</span><div><h4>Crear un índice local</h4><p>mini-consumes-tokens analiza el código con Tree-sitter y guarda símbolos y relaciones en SQLite. El servidor MCP y la CLI permiten consultar ese índice en el propio equipo.</p></div></li><li id="stage-result"><span class="stage-number" aria-hidden="true">03</span><div><h4>Acceder al contexto relevante</h4><p>Las consultas localizan definiciones, referencias y llamadas. Los paquetes de contexto reúnen información sobre un símbolo para que el asistente pueda centrarse en el código que necesita.</p></div></li></ol>
+<div class="comparison" data-comparison data-keyboard="false"><div class="comparison-header"><span class="example-label">Ejemplo ilustrativo</span><h4 id="comparison-title">Una consulta, una selección</h4><p>Consulta de ejemplo: localizar calculateTotal y su dependencia taxRate.</p></div><div class="comparison-controls" role="group" aria-label="Elegir la vista del ejemplo de código" hidden><button type="button" data-view="full" aria-pressed="true" aria-controls="example-code"><span data-marker aria-hidden="true">●</span> Archivo completo</button><button type="button" data-view="focused" aria-pressed="false" aria-controls="example-code"><span data-marker aria-hidden="true">○</span> Contexto relevante</button></div><div class="code-heading"><span>invoice.js</span><span data-view-label>Archivo completo</span></div><pre id="example-code" tabindex="0" aria-labelledby="comparison-title"><code><span class="code-line" data-line="1" data-relevant="false"><span class="line-number" aria-hidden="true">1</span><span>const currency = &quot;EUR&quot;;</span>
+</span><span class="code-line relevant-line" data-line="2" data-relevant="true"><span class="line-number" aria-hidden="true">2</span><span>const taxRate = 0.21;</span>
+</span><span class="code-line" data-line="3" data-relevant="false"><span class="line-number" aria-hidden="true">3</span><span> </span>
+</span><span class="code-line relevant-line" data-line="4" data-relevant="true"><span class="line-number" aria-hidden="true">4</span><span>export function calculateTotal(price) {</span>
+</span><span class="code-line relevant-line" data-line="5" data-relevant="true"><span class="line-number" aria-hidden="true">5</span><span>  return price * (1 + taxRate);</span>
+</span><span class="code-line relevant-line" data-line="6" data-relevant="true"><span class="line-number" aria-hidden="true">6</span><span>}</span>
+</span><span class="code-line" data-line="7" data-relevant="false"><span class="line-number" aria-hidden="true">7</span><span> </span>
+</span><span class="code-line" data-line="8" data-relevant="false"><span class="line-number" aria-hidden="true">8</span><span>export function formatPrice(price) {</span>
+</span><span class="code-line" data-line="9" data-relevant="false"><span class="line-number" aria-hidden="true">9</span><span>  return `${price.toFixed(2)} ${currency}`;</span>
+</span><span class="code-line" data-line="10" data-relevant="false"><span class="line-number" aria-hidden="true">10</span><span>}</span>
+</span><span class="code-line" data-line="11" data-relevant="false"><span class="line-number" aria-hidden="true">11</span><span> </span>
+</span><span class="code-line" data-line="12" data-relevant="false"><span class="line-number" aria-hidden="true">12</span><span>export function invoiceLabel(id) {</span>
+</span><span class="code-line" data-line="13" data-relevant="false"><span class="line-number" aria-hidden="true">13</span><span>  return `Invoice ${id}`;</span>
+</span><span class="code-line" data-line="14" data-relevant="false"><span class="line-number" aria-hidden="true">14</span><span>}</span>
+</span></code></pre><p class="comparison-status" role="status" aria-live="polite" data-full="Las líneas resaltadas son la función calculateTotal y la constante taxRate que utiliza. El resto del archivo sigue visible." data-focused="La selección muestra la función y su dependencia, con los números de línea del archivo original.">Las líneas resaltadas son la función calculateTotal y la constante taxRate que utiliza. El resto del archivo sigue visible.</p><p class="comparison-note">Código sintético. La selección está preparada para explicar la idea; esta demostración no ejecuta consultas MCP ni mide el ahorro de tokens.</p></div></div></article></section>
+<div class="background-sections"><section id="about" aria-labelledby="about-title"><h2 id="about-title">Sobre mí</h2><p>Soy Arkaitz. Me interesa crear aplicaciones y explorar cómo la inteligencia artificial puede ayudar en el desarrollo. En mini-consumes-tokens trabajo en una herramienta para reducir el contexto que necesitan los asistentes de IA al consultar código.</p></section><section id="experience" aria-labelledby="experience-title"><h2 id="experience-title">Experiencia</h2><h3>Tres meses creando una web</h3><p>Tres meses de prácticas dedicados a crear una web. Una experiencia con un proyecto concreto que forma parte de mi trayectoria en desarrollo.</p></section></div><div class="skill-sections"><section id="languages" class="skill-section" aria-labelledby="languages-title"><div><h2 id="languages-title">Lenguajes y tecnologías</h2><p>Lenguajes, frameworks y tecnologías que conozco.</p></div><ul class="item-list"><li>HTML</li><li>CSS</li><li>Bootstrap</li><li>JavaScript</li><li>Python</li><li>Flask</li><li>Django</li><li>PHP</li><li>SQL</li><li>NoSQL</li><li>Java</li><li>C#</li><li>.NET MAUI</li><li>Markdown</li></ul></section><section id="tools" class="skill-section" aria-labelledby="tools-title"><div><h2 id="tools-title">Herramientas</h2><p>Las herramientas que utilizo para desarrollar, gestionar datos y organizar mi trabajo.</p></div><ul class="item-list"><li>Visual Studio Code</li><li>Cursor</li><li>SQLite</li><li>MySQL</li><li>IntelliJ IDEA</li><li>Eclipse</li><li>DBeaver</li><li>Docker</li><li>GitHub</li><li>Apache</li><li>Git</li><li>Trello</li></ul></section><section id="ai" class="skill-section" aria-labelledby="ai-title"><div><h2 id="ai-title">Herramientas de IA</h2><p>Las herramientas de inteligencia artificial que utilizo.</p></div><ul class="item-list"><li>Cursor</li><li>GitHub Copilot</li><li>Codex</li><li>ChatGPT</li><li>Claude</li></ul></section></div>
+
+</main><footer class="site-footer"><p>Arkaitz Zubizarreta</p><p>Portfolio en construcción.</p><a href="https://github.com/Zubiarka8/zubiarka8.github.io">GitHub</a></footer></div><script>// Standalone export enhancement. Production uses ContextComparison.tsx.
+document.querySelectorAll('[data-comparison]').forEach((comparison) => {
+  const controls = comparison.querySelector('.comparison-controls');
+  const buttons = comparison.querySelectorAll('[data-view]');
+  const lines = comparison.querySelectorAll('[data-line]');
+  const status = comparison.querySelector('.comparison-status');
+  const label = comparison.querySelector('[data-view-label]');
+  controls.hidden = false;
+  buttons.forEach((button) => {
+    button.addEventListener('keydown', () => { comparison.dataset.keyboard = 'true'; });
+    button.addEventListener('pointerdown', () => { comparison.dataset.keyboard = 'false'; });
+    button.addEventListener('click', (event) => {
+      const view = button.dataset.view;
+      comparison.dataset.keyboard = String(event.detail === 0);
+      lines.forEach((line) => { line.hidden = view === 'focused' && line.dataset.relevant !== 'true'; });
+      buttons.forEach((control) => {
+        const selected = control === button;
+        control.setAttribute('aria-pressed', String(selected));
+        control.querySelector('[data-marker]').textContent = selected ? '●' : '○';
+      });
+      label.textContent = button.textContent.trim().slice(1).trim();
+      status.textContent = status.dataset[view];
+    });
+  });
+});
+document.querySelectorAll('[data-language]').forEach((link) => {
+  link.addEventListener('click', () => { link.hash = window.location.hash; });
+});
+</script></body></html>
