@@ -1,0 +1,78 @@
+{
+  "retrieved_on": "2026-10-09",
+  "method": "reviewed upstream files pinned to commit; no package scripts executed",
+  "automatic_discovery": false,
+  "skills": [
+    {
+      "name": "frontend-design",
+      "repository": "https://github.com/anthropics/skills",
+      "commit": "dbd4588f9e1033efb41dad4bef2f7947c8993d44",
+      "source_path": "skills/frontend-design/SKILL.md",
+      "destination": "skills/frontend-design",
+      "skill_sha256": "d91970639e9f5c37682ac7ab60094d35f1c7c1f38d731bd56396563aee10c1d3",
+      "license_file": "LICENSE.txt"
+    },
+    {
+      "name": "gsap-core",
+      "repository": "https://github.com/greensock/gsap-skills",
+      "commit": "aed9cfd3277740755f6bfc1155c7aa645403b760",
+      "source_path": "skills/gsap-core/SKILL.md",
+      "destination": "skills/gsap-core",
+      "skill_sha256": "3887b47e050ab5afbe2a9a820f23d39fa02ab785e06a343be44c6f91d84d12b3",
+      "license_file": "LICENSE"
+    },
+    {
+      "name": "gsap-performance",
+      "repository": "https://github.com/greensock/gsap-skills",
+      "commit": "aed9cfd3277740755f6bfc1155c7aa645403b760",
+      "source_path": "skills/gsap-performance/SKILL.md",
+      "destination": "skills/gsap-performance",
+      "skill_sha256": "cb5408d6fba707aabcbfe3320317a14c1f8fca6070074e5261047930f50d441e",
+      "license_file": "LICENSE"
+    },
+    {
+      "name": "prototype",
+      "repository": "https://github.com/emilkowalski/skills",
+      "commit": "e8a175de22ae1e49370fc144c1f3bb9aeedf988d",
+      "source_path": "skills/prototype/SKILL.md",
+      "destination": "skills/prototype",
+      "skill_sha256": "bba39c955eb1871c5a02733976ceec5d0324198e0812e667604756489c89f7b9",
+      "license_file": "LICENSE",
+      "file_sha256": {
+        "SKILL.md": "bba39c955eb1871c5a02733976ceec5d0324198e0812e667604756489c89f7b9",
+        "PICKER.md": "31a55eec94715cc79942e91e172e539e3031dcd5e2e5ee7c1446cf2caee960a6",
+        "LICENSE": "4ff5bdb7887ec1435c9cab0e8d1a7caee704d894d65c2a008ccc68b1cc2f260b"
+      }
+    },
+    {
+      "name": "emil-design-eng",
+      "repository": "https://github.com/emilkowalski/skills",
+      "commit": "e8a175de22ae1e49370fc144c1f3bb9aeedf988d",
+      "source_path": "skills/emil-design-eng/SKILL.md",
+      "destination": "skills/emil-design-eng",
+      "skill_sha256": "ffbe68e6007fb42cb8149f089b400a1ca007d59ba23e8948e2be4476f3175939",
+      "license_file": "LICENSE",
+      "file_sha256": {
+        "SKILL.md": "ffbe68e6007fb42cb8149f089b400a1ca007d59ba23e8948e2be4476f3175939",
+        "LICENSE": "4ff5bdb7887ec1435c9cab0e8d1a7caee704d894d65c2a008ccc68b1cc2f260b"
+      }
+    },
+    {
+      "name": "copywriting",
+      "repository": "https://github.com/coreyhaines31/marketingskills",
+      "commit": "1efedbc5148b54b2f0f6c6c9fe0be62e151c7fff",
+      "source_path": "skills/copywriting/SKILL.md",
+      "destination": "skills/copywriting",
+      "skill_sha256": "78c0a09b78a41995ba055d6549bbd7db3fe958673d039b9121e7a2e32bb4bb06",
+      "license_file": "LICENSE",
+      "file_sha256": {
+        "SKILL.md": "78c0a09b78a41995ba055d6549bbd7db3fe958673d039b9121e7a2e32bb4bb06",
+        "evals/evals.json": "c365b3208b3e07b97520bce9acca496fc5f939e3e1d70fec54bf1e8f9f92b0d7",
+        "references/ai-tells.md": "048a436d35d011313a4dd49dd1c6a6fb9f05203a2e40b8970ff88e7a2c548591",
+        "references/copy-frameworks.md": "352122944bf9e891ceb0e003adce41591d111e9d97057700626249919dfe430d",
+        "references/natural-transitions.md": "9bd61b0de5be2c4de4ce130c68236b4f290b12737823827a458bb2b4c8584683",
+        "LICENSE": "b70d71e24e40fce5da8f4b6f9cd862096a048e433db7f3c8cac5e348e6d34591"
+      }
+    }
+  ]
+}

@@ -1,0 +1,50 @@
+{
+  "installed_on": "2026-10-09",
+  "method": "verified local copies; global originals unchanged",
+  "automatic_discovery": false,
+  "reason": "sandbox denies writes to .agents and .codex",
+  "skills": [
+    {
+      "name": "ui-ux-pro-max",
+      "source": "/Users/arkaitz/.agents/skills/ui-ux-pro-max",
+      "destination": "skills/ui-ux-pro-max",
+      "files": 68,
+      "skill_sha256": "798785faea346cf824b761b36cf5f47335cfaeb9c4f5082a0355247cb4e302a1"
+    },
+    {
+      "name": "frontend-ui-engineering",
+      "source": "/Users/arkaitz/.agents/skills/frontend-ui-engineering",
+      "destination": "skills/frontend-ui-engineering",
+      "files": 1,
+      "skill_sha256": "549044e9bd8d7fe993ce8e5c0d2b0f5465650676dc15805329973f936179eb1e"
+    },
+    {
+      "name": "performance-optimization",
+      "source": "/Users/arkaitz/.agents/skills/performance-optimization",
+      "destination": "skills/performance-optimization",
+      "files": 1,
+      "skill_sha256": "00694d0c69bbde674d0e39de24052d90afea32d9fef9553eaee21a50a7e9b8cf"
+    },
+    {
+      "name": "code-review-and-quality",
+      "source": "/Users/arkaitz/.agents/skills/code-review-and-quality",
+      "destination": "skills/code-review-and-quality",
+      "files": 1,
+      "skill_sha256": "d4ec6843e78a8ab2049185d7c2742e2f1e343143c6c915eb5b4f9a3a00a44f94"
+    },
+    {
+      "name": "git-workflow-and-versioning",
+      "source": "/Users/arkaitz/.agents/skills/git-workflow-and-versioning",
+      "destination": "skills/git-workflow-and-versioning",
+      "files": 1,
+      "skill_sha256": "b7465d187935c52546d39fdc7bd6ac36d94eda25a9500ef8c18b767d2eb116ea"
+    },
+    {
+      "name": "ci-cd-and-automation",
+      "source": "/Users/arkaitz/.agents/skills/ci-cd-and-automation",
+      "destination": "skills/ci-cd-and-automation",
+      "files": 1,
+      "skill_sha256": "a6ed8ed56456b01ff8314c44eefc69897d9905ae4e06bb2b7036286efb79b5f0"
+    }
+  ]
+}
