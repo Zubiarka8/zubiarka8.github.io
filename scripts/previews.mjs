@@ -116,7 +116,7 @@ async function hubFiles() {
 async function hubTreeEntries(api) {
   const entries = new Map((await treeEntries(root, await hubFiles(), api)).map((entry) => [entry.path, entry]));
   const workspaceRoot = path.resolve(root, '..');
-  for (const file of ['package.json', 'scripts/repo.mjs', 'scripts/README.md', 'scripts/QUICKSTART.md']) {
+  for (const file of ['scripts/repo.mjs', 'scripts/README.md', 'scripts/QUICKSTART.md']) {
     const workspaceEntries = await treeEntries(workspaceRoot, [path.join(workspaceRoot, file)], api);
     for (const entry of workspaceEntries) entries.set(entry.path, entry);
   }
