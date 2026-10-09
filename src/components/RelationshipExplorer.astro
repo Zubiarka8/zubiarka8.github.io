@@ -1,0 +1,73 @@
+---
+import { relationshipIds, relationshipItems } from '../data/connections';
+import { featuredProject } from '../data/profile';
+import { translations, type Locale } from '../i18n/translations';
+interface Props { locale: Locale }
+const { locale } = Astro.props;
+const text = translations[locale];
+---
+<section id="projects" class="relationship-section" aria-labelledby="projects-title">
+  <div class="map-heading">
+    <h2 id="projects-title">{text.connections.title}</h2>
+    <p>{text.connections.instructions}</p>
+  </div>
+  <div class="relationship-map" data-explorer>
+    <svg class="connectors" viewBox="0 0 1000 500" preserveAspectRatio="none" aria-hidden="true" focusable="false">
+      <path class="connector connector-knowledge" d="M150 125 H240 Q280 125 280 165 V210 Q280 250 330 250 H500" />
+      <path class="connector connector-workflow" d="M150 375 H240 Q280 375 280 335 V290 Q280 250 330 250 H500" />
+      <path class="connector connector-assistants" d="M850 125 H760 Q720 125 720 165 V210 Q720 250 670 250 H500" />
+      <path class="connector connector-project" d="M850 375 H760 Q720 375 720 335 V290 Q720 250 670 250 H500" />
+      <g class="connection-points"><circle cx="150" cy="125" r="5" /><circle cx="150" cy="375" r="5" /><circle cx="850" cy="125" r="5" /><circle cx="850" cy="375" r="5" /></g>
+    </svg>
+    <article class="project-sheet" aria-labelledby="featured-project-title">
+      <div class="project-mark" aria-hidden="true"><span></span><span></span><span></span></div>
+      <p class="project-label">{text.featuredProject.label}</p>
+      <h3 id="featured-project-title">mini-<wbr />consumes-<wbr />tokens</h3>
+      <p class="project-description">{text.featuredProject.description}</p>
+      <ul class="project-stack" aria-label={text.connections.actualStack}>
+        {featuredProject.technologies.map((item) => <li>{item}</li>)}
+      </ul>
+      <a class="project-link" href={featuredProject.repositoryUrl}>{text.featuredProject.sourceLink}<span aria-hidden="true">↗</span></a>
+    </article>
+    {relationshipIds.map((id) => (
+      <button type="button" hidden class={`group-node group-${id}`} data-group={id} aria-pressed="false" aria-controls={`relationship-${id}`}>
+        <span class="node-symbol" aria-hidden="true">{id === 'knowledge' ? '{ }' : id === 'workflow' ? '+ /' : id === 'assistants' ? '✳' : '⌘'}</span>
+        <span class="node-title">{text.connections.groups[id].title}</span>
+        <span class="node-summary">{text.connections.groups[id].summary}</span>
+        <span class="node-action"><span data-selected hidden>{text.connections.selected}</span><span data-select>{text.connections.select}</span><span aria-hidden="true">↗</span></span>
+      </button>
+    ))}
+    <div class="relationship-details" aria-live="polite" aria-atomic="true">
+      {relationshipIds.map((id) => (
+        <div id={`relationship-${id}`} class="relationship-panel" data-panel={id}>
+          <h3>{text.connections.groups[id].title}</h3>
+          <p>{text.connections.groups[id].description}</p>
+          <ul class="item-list">{relationshipItems[id].map((item) => <li>{item}</li>)}</ul>
+        </div>
+      ))}
+    </div>
+  </div>
+  <p class="concept-note"><span aria-hidden="true">⊙</span>{text.connections.disclaimer}</p>
+</section>
+<script>
+  document.querySelectorAll<HTMLElement>('[data-explorer]').forEach((explorer) => {
+    const controls = Array.from(explorer.querySelectorAll<HTMLButtonElement>('[data-group]'));
+    const panels = Array.from(explorer.querySelectorAll<HTMLElement>('[data-panel]'));
+    function selectGroup(id: string) {
+      explorer.dataset.active = id;
+      controls.forEach((control) => {
+        const selected = control.dataset.group === id;
+        control.setAttribute('aria-pressed', String(selected));
+        control.querySelector<HTMLElement>('[data-selected]')!.hidden = !selected;
+        control.querySelector<HTMLElement>('[data-select]')!.hidden = selected;
+      });
+      panels.forEach((panel) => { panel.hidden = panel.dataset.panel !== id; });
+    }
+    selectGroup('knowledge');
+    controls.forEach((control) => {
+      control.hidden = false;
+      control.addEventListener('click', () => selectGroup(control.dataset.group!));
+    });
+    explorer.classList.add('is-interactive');
+  });
+</script>

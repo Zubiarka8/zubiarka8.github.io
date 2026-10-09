@@ -1,3 +1,5 @@
+import type { RelationshipId } from '../data/connections';
+
 export const locales = ['es', 'en'] as const;
 export type Locale = (typeof locales)[number];
 export const sectionIds = ['about', 'experience', 'languages', 'tools', 'ai', 'projects', 'contact'] as const;
@@ -23,6 +25,18 @@ type Translation = {
     title: string;
     description: string;
   }>;
+  connections: {
+    navigation: string;
+    statement: string;
+    title: string;
+    instructions: string;
+    disclaimer: string;
+    selected: string;
+    select: string;
+    actualStack: string;
+    internship: string;
+    groups: Record<RelationshipId, { title: string; summary: string; description: string }>;
+  };
   footer: string;
 };
 
@@ -52,7 +66,24 @@ export const translations = {
       projects: { title: 'Proyectos', description: 'Mi proyecto destacado, con su código y documentación.' },
       contact: { title: 'Contacto', description: 'Puedes contactar conmigo a través de este enlace.' },
     },
-    footer: 'Portfolio en construcción.',
+    connections: {
+      navigation: 'Navegación principal',
+      statement: 'Conectar ideas. Crear herramientas útiles.',
+      title: 'El código también tiene conexiones.',
+      instructions: 'Selecciona un grupo para explorar sus herramientas y su papel en este mapa.',
+      disclaimer: 'Mapa conceptual de mi perfil. Las conexiones no indican que todas estas herramientas se utilicen en el proyecto.',
+      selected: 'Seleccionado',
+      select: 'Explorar grupo',
+      actualStack: 'Tecnologías del proyecto',
+      internship: 'Prácticas de desarrollo web · 3 meses',
+      groups: {
+        knowledge: { title: 'Conocimientos', summary: 'Lenguajes y tecnologías', description: 'Los lenguajes y frameworks que conozco forman mi base para crear aplicaciones. Esta conexión representa mi perfil, no las dependencias del MCP.' },
+        workflow: { title: 'Desarrollo', summary: 'Herramientas de trabajo', description: 'Editores, bases de datos y herramientas que utilizo para desarrollar y organizar mi trabajo. Su relación con el proyecto es conceptual.' },
+        assistants: { title: 'Inteligencia artificial', summary: 'Herramientas que utilizo', description: 'Utilizo estas herramientas de IA. Mi proyecto MCP aborda un problema de este ámbito: localizar código relevante y reducir la lectura repetida de archivos. El mapa no afirma integraciones con cada herramienta.' },
+        project: { title: 'Dentro del MCP', summary: 'Su stack real', description: 'mini-consumes-tokens es un servidor y CLI escrito en Rust. Utiliza SQLite y Tree-sitter para indexar código localmente y ofrece consultas a través de MCP.' },
+      },
+    },
+    footer: 'Tecnología, aprendizaje y proyectos propios.',
   },
   en: {
     title: 'Arkaitz Zubizarreta | Portfolio',
@@ -79,6 +110,23 @@ export const translations = {
       projects: { title: 'Projects', description: 'My featured project, with its source code and documentation.' },
       contact: { title: 'Contact', description: 'You can reach me through this link.' },
     },
-    footer: 'Portfolio under construction.',
+    connections: {
+      navigation: 'Main navigation',
+      statement: 'Connect ideas. Build useful tools.',
+      title: 'Code has connections, too.',
+      instructions: 'Select a group to explore its tools and its role in this map.',
+      disclaimer: 'A conceptual map of my profile. Connections do not mean that every tool is used in the project.',
+      selected: 'Selected',
+      select: 'Explore group',
+      actualStack: 'Project technologies',
+      internship: 'Web development internship · 3 months',
+      groups: {
+        knowledge: { title: 'Knowledge', summary: 'Languages and technologies', description: 'The languages and frameworks I know form my foundation for building applications. This connection represents my profile, not the MCP dependencies.' },
+        workflow: { title: 'Development', summary: 'Tools for my work', description: 'Editors, databases, and tools I use to develop and organize my work. Their relationship to the project is conceptual.' },
+        assistants: { title: 'Artificial intelligence', summary: 'Tools I use', description: 'I use these AI tools. My MCP project addresses a problem in this field: finding relevant code and reducing repeated file reading. This map does not claim integrations with every tool.' },
+        project: { title: 'Inside the MCP', summary: 'Its actual stack', description: 'mini-consumes-tokens is a server and CLI written in Rust. It uses SQLite and Tree-sitter to index code locally and provides queries through MCP.' },
+      },
+    },
+    footer: 'Technology, learning, and personal projects.',
   },
 } satisfies Record<Locale, Translation>;

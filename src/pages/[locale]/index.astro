@@ -1,78 +1,68 @@
 ---
 import Layout from '../../layouts/Layout.astro';
 import LanguageSwitcher from '../../components/LanguageSwitcher';
-import { locales, sectionIds, translations, type Locale } from '../../i18n/translations';
+import RelationshipExplorer from '../../components/RelationshipExplorer.astro';
+import { locales, translations, type Locale } from '../../i18n/translations';
 import { expertise } from '../../data/expertise';
-import { contact, featuredProject, profile } from '../../data/profile';
+import { profile } from '../../data/profile';
 
 export function getStaticPaths() {
   return locales.map((locale) => ({ params: { locale }, props: { locale } }));
 }
-
 interface Props { locale: Locale }
 const { locale } = Astro.props;
 const text = translations[locale];
-const sections = sectionIds.filter((id) => id !== 'contact' || (contact.enabled && contact.url)).map((id) => ({
-  id,
-  ...text.sections[id],
-  items: expertise[id],
-}));
+const skillSections = ['languages', 'tools', 'ai'] as const;
 ---
 <Layout locale={locale}>
-  <div class="mx-auto max-w-6xl px-6 sm:px-10">
-    <header class="flex flex-wrap items-center justify-between gap-4 border-b border-line py-6">
-      <a href={`/${locale}/`} class="font-mono text-base font-semibold tracking-tight">zubiarka8<span class="text-accent">.</span></a>
+  <div class="site-shell">
+    <header class="site-header">
+      <a href={`/${locale}/`} class="wordmark" aria-label={profile.publicName}>az<span aria-hidden="true">⋆</span></a>
+      <nav class="main-navigation" aria-label={text.connections.navigation}>
+        <a href="#projects">{text.sections.projects.title}</a>
+        <a href="#experience">{text.sections.experience.title}</a>
+        <a href="#languages">{text.sections.languages.title}</a>
+      </nav>
       <LanguageSwitcher locale={locale} label={text.language} client:load />
     </header>
-
     <main id="main">
-      <section class="py-20 sm:py-28" aria-labelledby="introduction">
-        <p class="mb-6 font-mono text-xs uppercase tracking-[0.18em] text-muted">{text.eyebrow}</p>
-        <h1 id="introduction" class="max-w-4xl text-5xl font-semibold tracking-tight sm:text-7xl">{text.heading}</h1>
-        <p class="mt-8 max-w-xl text-lg leading-relaxed text-muted">{text.introduction}</p>
-        <div class="mt-10 flex flex-wrap gap-4">
-          <a href="#projects" class="rounded-full bg-ink px-6 py-3 text-paper transition-colors hover:bg-accent">{text.projectsLink} <span aria-hidden="true">↗</span></a>
-          <a href={profile.githubUrl} class="rounded-full border border-line px-6 py-3 transition-colors hover:border-ink">{text.githubLink}</a>
+      <section class="introduction" aria-labelledby="introduction-title">
+        <div class="name-block">
+          <h1 id="introduction-title"><span>Arkaitz</span><span>Zubizarreta<span class="name-dot" aria-hidden="true">.</span></span></h1>
+          <p class="personal-statement">{text.connections.statement}</p>
+        </div>
+        <div class="introduction-copy">
+          <p>{text.introduction}</p>
+          <div class="intro-links">
+            <a href="#projects" class="primary-link">{text.projectsLink}<span aria-hidden="true">↓</span></a>
+            <a href={profile.githubUrl} class="quiet-link">{text.githubLink}<span aria-hidden="true">↗</span></a>
+          </div>
         </div>
       </section>
-
-      {sections.map(({ id, title, description, items }, index) => (
-        <section id={id} aria-labelledby={`${id}-title`} class="grid gap-4 border-t border-line py-10 sm:grid-cols-[3rem_1fr_1.2fr] sm:gap-8">
-          <span aria-hidden="true" class="font-mono text-sm text-accent">{String(index + 1).padStart(2, '0')}</span>
-          <h2 id={`${id}-title`} class="text-2xl font-medium tracking-tight">{title}</h2>
-          <div>
-            <p class="max-w-lg leading-relaxed text-muted">{description}</p>
-            {id === 'projects' && (
-              <article class="mt-6 rounded-xl border border-line p-6" aria-labelledby="featured-project-title">
-                <p class="font-mono text-xs uppercase tracking-wider text-accent">{text.featuredProject.label}</p>
-                <h3 id="featured-project-title" class="mt-3 break-words text-xl font-semibold">{featuredProject.name}</h3>
-                <p class="mt-4 leading-relaxed text-muted">{text.featuredProject.description}</p>
-                <ul class="mt-4 flex flex-wrap gap-2">
-                  {featuredProject.technologies.map((technology) => (
-                    <li class="rounded-full border border-line px-3 py-1 text-sm">{technology}</li>
-                  ))}
-                </ul>
-                <a href={featuredProject.repositoryUrl} class="mt-6 inline-block underline underline-offset-4">{text.featuredProject.sourceLink} <span aria-hidden="true">↗</span></a>
-              </article>
-            )}
-            {id === 'contact' && contact.url && (
-              <a href={contact.url} class="mt-6 inline-block underline underline-offset-4">{text.contactLink}</a>
-            )}
-            {items && (
-              <ul class="mt-6 flex flex-wrap gap-2">
-                {items.map((item) => (
-                  <li class="rounded-full border border-line px-4 py-2 text-sm">{item}</li>
-                ))}
-              </ul>
-            )}
-          </div>
+      <RelationshipExplorer locale={locale} />
+      <div class="background-sections">
+        <section id="about" aria-labelledby="about-title">
+          <h2 id="about-title">{text.sections.about.title}</h2>
+          <p>{text.sections.about.description}</p>
         </section>
-      ))}
+        <section id="experience" class="experience-section" aria-labelledby="experience-title">
+          <h2 id="experience-title">{text.sections.experience.title}</h2>
+          <h3>{text.connections.internship}</h3>
+          <p>{text.sections.experience.description}</p>
+        </section>
+      </div>
+      <div class="skill-sections">
+        {skillSections.map((id) => (
+          <section id={id} class="skill-section" aria-labelledby={`${id}-title`}>
+            <div><h2 id={`${id}-title`}>{text.sections[id].title}</h2><p>{text.sections[id].description}</p></div>
+            <ul class="item-list">{expertise[id]?.map((item) => <li>{item}</li>)}</ul>
+          </section>
+        ))}
+      </div>
     </main>
-
-    <footer class="mt-10 flex flex-wrap justify-between gap-4 border-t border-line py-8 text-sm text-muted">
-      <p>{profile.publicName} · {text.footer}</p>
-      <a href="https://github.com/Zubiarka8/zubiarka8.github.io" class="hover:text-ink">GitHub <span aria-hidden="true">↗</span></a>
+    <footer class="site-footer">
+      <p>{profile.publicName}</p><p>{text.footer}</p>
+      <a href="https://github.com/Zubiarka8/zubiarka8.github.io">GitHub <span aria-hidden="true">↗</span></a>
     </footer>
   </div>
 </Layout>

@@ -12,7 +12,8 @@
     "build": "astro build",
     "preview": "astro preview",
     "test": "npm run build && node --experimental-strip-types --test tests/*.test.mjs",
-    "test:translations": "node --experimental-strip-types --test tests/translations.test.mjs"
+    "test:translations": "node --experimental-strip-types --test tests/translations.test.mjs",
+    "test:connections": "node --experimental-strip-types --test tests/connections.test.mjs"
   },
   "dependencies": {
     "astro": "7.3.8",
