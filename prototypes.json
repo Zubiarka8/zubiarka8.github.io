@@ -2,9 +2,38 @@
   "repository": "Zubiarka8/zubiarka8.github.io",
   "siteUrl": "https://zubiarka8.github.io",
   "prototypes": [
-    { "slug": "01-connections", "branch": "prototype/01-connections", "name": "01 · Connections", "revision": "1be73468e06321da1b3cca6e069cf7e16bcd022c", "es": "Un mapa de relaciones entre el proyecto, las tecnologías y las herramientas.", "en": "A relationship map connecting the project, technologies, and tools." },
-    { "slug": "02-idea-to-code", "branch": "prototype/02-idea-to-code", "name": "02 · De la idea al código", "englishName": "02 · From idea to code", "revision": "e52bf744a210f1145979d512c516515a7cae9dd7", "es": "El recorrido desde un problema hasta una herramienta de consulta de código.", "en": "The path from a problem to a tool for querying code." },
-    { "slug": "03-frequency", "branch": "prototype/03-frequency", "name": "03 · Frequency", "revision": "ccf0cbc18b1023ffccee82a19a16a6fa4a16a635", "es": "Una firma geométrica AZ que responde a la sección seleccionada.", "en": "A geometric AZ signature that responds to the selected section." },
-    { "slug": "04-modular-lab", "branch": "prototype/04-exploration", "name": "04 · Modular Lab", "revision": null, "es": "Pendiente de implementación.", "en": "Implementation pending." }
+    {
+      "slug": "01-connections",
+      "branch": "prototype/01-connections",
+      "name": "01 · Connections",
+      "revision": "1be73468e06321da1b3cca6e069cf7e16bcd022c",
+      "es": "Un mapa de relaciones entre el proyecto, las tecnologías y las herramientas.",
+      "en": "A relationship map connecting the project, technologies, and tools."
+    },
+    {
+      "slug": "02-idea-to-code",
+      "branch": "prototype/02-idea-to-code",
+      "name": "02 · De la idea al código",
+      "englishName": "02 · From idea to code",
+      "revision": "e52bf744a210f1145979d512c516515a7cae9dd7",
+      "es": "El recorrido desde un problema hasta una herramienta de consulta de código.",
+      "en": "The path from a problem to a tool for querying code."
+    },
+    {
+      "slug": "03-frequency",
+      "branch": "prototype/03-frequency",
+      "name": "03 · Frequency",
+      "revision": "9af682c7e6a5a6e06ef923f391264ba69c4dae6b",
+      "es": "Una firma geométrica AZ que responde a la sección seleccionada.",
+      "en": "A geometric AZ signature that responds to the selected section."
+    },
+    {
+      "slug": "04-modular-lab",
+      "branch": "prototype/04-exploration",
+      "name": "04 · Modular Lab",
+      "revision": null,
+      "es": "Pendiente de implementación.",
+      "en": "Implementation pending."
+    }
   ]
 }
